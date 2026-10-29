@@ -1,0 +1,6 @@
+{
+  "name": "Aksara POS - Kasir Pintar & Manajemen Stok",
+  "description": "Sistem Kasir Modern (POS) dengan Manajemen Stok, Cetak Struk Thermal, Dasbor Analitik Real-time, Pembayaran Digital QRIS, dan Laporan Penjualan Otomatis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
