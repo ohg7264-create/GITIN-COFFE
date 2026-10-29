@@ -58,7 +58,7 @@ export const BillPanel: React.FC<BillPanelProps> = ({ onOpenLoginModal }) => {
   };
 
   return (
-    <aside className="w-80 lg:w-96 flex-shrink-0 bg-white dark:bg-stone-900 border-l border-stone-200/90 dark:border-stone-800 flex flex-col h-screen sticky top-0 print:hidden transition-colors">
+    <aside className="w-full xl:w-96 flex-shrink-0 bg-white dark:bg-stone-900 border-l border-stone-200/90 dark:border-stone-800 flex flex-col h-full xl:h-screen sticky top-0 print:hidden transition-colors">
       {/* Top Header: Cashier profile matching mockup */}
       <div className="p-4 sm:p-5 border-b border-stone-100 dark:border-stone-800 flex items-center justify-between">
         <div className="flex items-center gap-2">

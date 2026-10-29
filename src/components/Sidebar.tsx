@@ -14,11 +14,17 @@ import {
   CakeSlice,
   AlertTriangle,
   FolderTree,
+  X,
 } from 'lucide-react';
 import { usePOS, ActiveView } from '../context/POSContext';
 import { checkLowStockAlerts } from '../utils/pos-logic';
 
-export const Sidebar: React.FC = () => {
+interface SidebarProps {
+  isMobileDrawer?: boolean;
+  onCloseMobile?: () => void;
+}
+
+export const Sidebar: React.FC<SidebarProps> = ({ isMobileDrawer = false, onCloseMobile }) => {
   const {
     activeView,
     setActiveView,
@@ -68,21 +74,42 @@ export const Sidebar: React.FC = () => {
     { id: 'settings', label: 'Backup & Pengaturan', icon: <Database className="w-4 h-4" /> },
   ];
 
+  const handleNavClick = (viewId: ActiveView) => {
+    setActiveView(viewId);
+    if (isMobileDrawer && onCloseMobile) {
+      onCloseMobile();
+    }
+  };
+
+  const handleCategoryClick = (categoryId: string) => {
+    setActiveView('pos');
+    setSelectedCategory(categoryId);
+    if (isMobileDrawer && onCloseMobile) {
+      onCloseMobile();
+    }
+  };
+
   return (
-    <aside className="w-64 flex-shrink-0 bg-white dark:bg-stone-900 border-r border-stone-200/80 dark:border-stone-800 flex flex-col h-screen sticky top-0 overflow-y-auto select-none print:hidden transition-colors">
+    <aside
+      className={`${
+        isMobileDrawer
+          ? 'w-full h-full flex flex-col'
+          : 'hidden lg:flex w-64 flex-shrink-0 h-screen sticky top-0 flex-col'
+      } bg-white dark:bg-stone-900 border-r border-stone-200/80 dark:border-stone-800 overflow-y-auto select-none print:hidden transition-colors`}
+    >
       {/* Top Logo - Curved green monogram matching mockup */}
-      <div className="p-5 flex items-center justify-between border-b border-stone-100 dark:border-stone-800">
+      <div className="p-4 sm:p-5 flex items-center justify-between border-b border-stone-100 dark:border-stone-800">
         <button
           onClick={() => {
             setActiveView('pos');
             setSelectedCategory('all');
+            if (isMobileDrawer && onCloseMobile) onCloseMobile();
           }}
           className="flex items-center gap-3 text-left group focus:outline-none"
         >
-          <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-700 to-green-500 flex items-center justify-center shadow-md shadow-green-600/20 group-hover:scale-105 transition-transform">
-            {/* Custom stylized monogram 'a' shape matching the prompt's reference logo */}
+          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-emerald-700 to-green-500 flex items-center justify-center shadow-md shadow-green-600/20 group-hover:scale-105 transition-transform flex-shrink-0">
             <svg
-              className="w-7 h-7 text-white fill-current"
+              className="w-6 h-6 sm:w-7 sm:h-7 text-white fill-current"
               viewBox="0 0 32 32"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -97,22 +124,34 @@ export const Sidebar: React.FC = () => {
             </svg>
           </div>
           <div>
-            <span className="font-extrabold text-xl tracking-tight text-stone-900 dark:text-stone-100 flex items-center gap-1.5">
+            <span className="font-extrabold text-lg sm:text-xl tracking-tight text-stone-900 dark:text-stone-100 flex items-center gap-1.5">
               Aksara<span className="text-emerald-600">POS</span>
             </span>
             <p className="text-[11px] font-medium text-stone-500 dark:text-stone-400">Kasir & Stok Pintar</p>
           </div>
         </button>
 
-        {/* Dark mode switch */}
-        <button
-          onClick={toggleDarkMode}
-          aria-label="Toggle Mode Gelap"
-          className="p-2 rounded-xl text-stone-500 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-800 transition"
-          title={isDarkMode ? 'Beralih ke Mode Terang' : 'Beralih ke Mode Gelap'}
-        >
-          {isDarkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />}
-        </button>
+        <div className="flex items-center gap-1">
+          {/* Dark mode switch */}
+          <button
+            onClick={toggleDarkMode}
+            aria-label="Toggle Mode Gelap"
+            className="p-2 rounded-xl text-stone-500 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-800 transition"
+            title={isDarkMode ? 'Beralih ke Mode Terang' : 'Beralih ke Mode Gelap'}
+          >
+            {isDarkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />}
+          </button>
+
+          {isMobileDrawer && (
+            <button
+              onClick={onCloseMobile}
+              className="p-2 rounded-xl text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800"
+              aria-label="Tutup menu"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Main System Nav Links */}
@@ -125,7 +164,7 @@ export const Sidebar: React.FC = () => {
           return (
             <button
               key={item.id}
-              onClick={() => setActiveView(item.id)}
+              onClick={() => handleNavClick(item.id)}
               className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                 isActive
                   ? 'bg-emerald-600 text-white shadow-sm shadow-emerald-600/30'
@@ -146,17 +185,14 @@ export const Sidebar: React.FC = () => {
         })}
       </div>
 
-      {/* Categories from the visual reference (shown in POS mode) */}
+      {/* Categories from the visual reference */}
       <div className="flex-1 px-3 py-4 space-y-5 overflow-y-auto">
         {/* Drink Section */}
         <div>
           <div className="flex items-center justify-between px-2 mb-2">
             <h3 className="text-sm font-bold tracking-tight text-stone-800 dark:text-stone-200">Drink</h3>
             <button
-              onClick={() => {
-                setActiveView('pos');
-                setSelectedCategory('all');
-              }}
+              onClick={() => handleCategoryClick('all')}
               className="text-[11px] text-emerald-600 hover:text-emerald-700 font-medium"
             >
               Semua
@@ -168,11 +204,8 @@ export const Sidebar: React.FC = () => {
               return (
                 <button
                   key={cat.id}
-                  onClick={() => {
-                    setActiveView('pos');
-                    setSelectedCategory(cat.id);
-                  }}
-                  className={`relative w-full h-15 rounded-xl overflow-hidden group text-left transition-all ${
+                  onClick={() => handleCategoryClick(cat.id)}
+                  className={`relative w-full h-14 sm:h-15 rounded-xl overflow-hidden group text-left transition-all ${
                     isSelected
                       ? 'ring-2 ring-emerald-500 ring-offset-2 dark:ring-offset-stone-900 scale-[1.02]'
                       : 'hover:opacity-95'
@@ -207,11 +240,8 @@ export const Sidebar: React.FC = () => {
               return (
                 <button
                   key={cat.id}
-                  onClick={() => {
-                    setActiveView('pos');
-                    setSelectedCategory(cat.id);
-                  }}
-                  className={`relative w-full h-15 rounded-xl overflow-hidden group text-left transition-all ${
+                  onClick={() => handleCategoryClick(cat.id)}
+                  className={`relative w-full h-14 sm:h-15 rounded-xl overflow-hidden group text-left transition-all ${
                     isSelected
                       ? 'ring-2 ring-emerald-500 ring-offset-2 dark:ring-offset-stone-900 scale-[1.02]'
                       : 'hover:opacity-95'
@@ -244,7 +274,7 @@ export const Sidebar: React.FC = () => {
             <div className="text-[11px] leading-tight">
               <span className="font-bold">{lowStockItems.length} Produk</span> stok menipis!
               <button
-                onClick={() => setActiveView('stock')}
+                onClick={() => handleNavClick('stock')}
                 className="block mt-1 text-emerald-600 dark:text-emerald-400 font-bold hover:underline"
               >
                 Cek Stok Sekarang &rarr;
