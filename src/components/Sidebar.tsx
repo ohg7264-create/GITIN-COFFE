@@ -95,10 +95,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileDrawer = false, onClos
         isMobileDrawer
           ? 'w-full h-full flex flex-col'
           : 'hidden lg:flex w-64 flex-shrink-0 h-screen sticky top-0 flex-col'
-      } bg-white dark:bg-slate-900 border-r border-sky-100 dark:border-slate-800 overflow-y-auto select-none print:hidden transition-colors shadow-xs`}
+      } bg-white/70 dark:bg-slate-900/75 backdrop-blur-md border-r border-sky-200/50 dark:border-slate-800/80 overflow-y-auto select-none print:hidden transition-colors shadow-xs`}
     >
       {/* Top Logo - Modern Coffee icon with light blue gradient */}
-      <div className="p-4 sm:p-5 flex items-center justify-between border-b border-sky-100/80 dark:border-slate-800">
+      <div className="p-4 sm:p-5 flex items-center justify-between border-b border-sky-100/60 dark:border-slate-800/60">
         <button
           onClick={() => {
             setActiveView('pos');

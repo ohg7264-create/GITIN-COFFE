@@ -29,6 +29,7 @@ import {
   Coffee,
 } from 'lucide-react';
 import { checkLowStockAlerts, formatRupiah } from './utils/pos-logic';
+import { MegamendungBackground } from './components/common/MegamendungBatik';
 
 const MainLayout: React.FC = () => {
   const {
@@ -48,12 +49,15 @@ const MainLayout: React.FC = () => {
   const lowStockCount = checkLowStockAlerts(products).length;
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen w-screen overflow-hidden bg-gradient-to-br from-sky-100 via-sky-50 to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-slate-100 font-sans transition-colors">
+    <div className="flex flex-col lg:flex-row h-screen w-screen overflow-hidden bg-gradient-to-br from-sky-100 via-sky-50 to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-slate-100 font-sans transition-colors relative">
+      {/* Authentic Cirebon Batik Megamendung Ambient Background Motif (Biru Muda) */}
+      <MegamendungBackground />
+
       {/* 1. Desktop Left Sidebar Navigation (hidden on mobile, fixed on lg+) */}
       <Sidebar />
 
       {/* 2. Mobile Top Navigation Header (visible only on < lg screens) */}
-      <header className="lg:hidden sticky top-0 z-20 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-3.5 py-2 landscape:py-1.5 border-b border-sky-100 dark:border-slate-800 flex items-center justify-between print:hidden shadow-xs">
+      <header className="lg:hidden sticky top-0 z-20 bg-white/70 dark:bg-slate-900/75 backdrop-blur-md px-3.5 py-2 landscape:py-1.5 border-b border-sky-200/50 dark:border-slate-800 flex items-center justify-between print:hidden shadow-xs">
         <div className="flex items-center gap-2.5">
           <button
             onClick={() => setIsMobileNavOpen(true)}
@@ -193,7 +197,7 @@ const MainLayout: React.FC = () => {
       </div>
 
       {/* 5. Mobile Bottom Navigation Bar (thumb friendly for smartphone use) */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-sky-100 dark:border-slate-800 flex items-center justify-around py-1 sm:py-1.5 px-2 landscape:py-0.5 print:hidden shadow-lg">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/70 dark:bg-slate-900/75 backdrop-blur-md border-t border-sky-200/50 dark:border-slate-800 flex items-center justify-around py-1 sm:py-1.5 px-2 landscape:py-0.5 print:hidden shadow-lg">
         <button
           onClick={() => setActiveView('pos')}
           className={`flex flex-col items-center gap-0.5 sm:gap-1 py-1 px-2.5 rounded-xl transition ${
@@ -268,8 +272,8 @@ const MainLayout: React.FC = () => {
 
       {/* 6. Mobile Sidebar Navigation Drawer (opened via hamburger icon) */}
       {isMobileNavOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex animate-in fade-in duration-150 print:hidden">
-          <div className="w-4/5 max-w-xs bg-white dark:bg-slate-900 h-full relative flex flex-col shadow-2xl animate-in slide-in-from-left duration-200">
+        <div className="lg:hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex animate-in fade-in duration-150 print:hidden">
+          <div className="w-4/5 max-w-xs bg-white/85 dark:bg-slate-900/90 backdrop-blur-md h-full relative flex flex-col shadow-2xl animate-in slide-in-from-left duration-200">
             <Sidebar
               isMobileDrawer={true}
               onCloseMobile={() => setIsMobileNavOpen(false)}
@@ -284,12 +288,12 @@ const MainLayout: React.FC = () => {
 
       {/* 7. Mobile Bill Slide-over Drawer (visible on < lg screens) */}
       {isMobileBillOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex justify-end animate-in fade-in duration-150 print:hidden">
+        <div className="lg:hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex justify-end animate-in fade-in duration-150 print:hidden">
           <div
             className="flex-1 h-full"
             onClick={() => setIsMobileBillOpen(false)}
           />
-          <div className="w-full sm:w-96 max-w-full bg-white dark:bg-slate-900 h-full relative flex flex-col shadow-2xl animate-in slide-in-from-right duration-200 overflow-y-auto">
+          <div className="w-full sm:w-96 max-w-full bg-white/85 dark:bg-slate-900/90 backdrop-blur-md h-full relative flex flex-col shadow-2xl animate-in slide-in-from-right duration-200 overflow-y-auto">
             <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20">
               <button
                 onClick={() => setIsMobileBillOpen(false)}

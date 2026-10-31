@@ -57,7 +57,7 @@ export const BillPanel: React.FC<BillPanelProps> = ({ onOpenLoginModal }) => {
   };
 
   return (
-    <aside className="w-full lg:w-80 xl:w-96 flex-shrink-0 bg-white dark:bg-slate-900 border-l border-sky-100 dark:border-slate-800 flex flex-col h-full lg:h-screen sticky top-0 print:hidden transition-colors shadow-xs">
+    <aside className="w-full lg:w-80 xl:w-96 flex-shrink-0 bg-white/70 dark:bg-slate-900/75 backdrop-blur-md border-l border-sky-200/50 dark:border-slate-800/80 flex flex-col h-full lg:h-screen sticky top-0 print:hidden transition-colors shadow-xs">
       {/* Top Header: Cashier profile matching mockup */}
       <div className="p-3.5 sm:p-5 landscape:p-2.5 border-b border-sky-100/80 dark:border-slate-800 flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -211,7 +211,7 @@ export const BillPanel: React.FC<BillPanelProps> = ({ onOpenLoginModal }) => {
       </div>
 
       {/* Bill Footer & Totals */}
-      <div className="p-3.5 sm:p-5 landscape:p-2.5 border-t border-sky-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/90 space-y-2.5 landscape:space-y-1.5">
+      <div className="p-3.5 sm:p-5 landscape:p-2.5 border-t border-sky-100/60 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md space-y-2.5 landscape:space-y-1.5">
         {/* Sky Blue Divider */}
         <div className="h-0.5 bg-gradient-to-r from-sky-400 to-blue-500 rounded-full w-full mb-2" />
 
