@@ -57,9 +57,9 @@ export const BillPanel: React.FC<BillPanelProps> = ({ onOpenLoginModal }) => {
   };
 
   return (
-    <aside className="w-full xl:w-96 flex-shrink-0 bg-white dark:bg-slate-900 border-l border-sky-100 dark:border-slate-800 flex flex-col h-full xl:h-screen sticky top-0 print:hidden transition-colors shadow-xs">
+    <aside className="w-full lg:w-80 xl:w-96 flex-shrink-0 bg-white dark:bg-slate-900 border-l border-sky-100 dark:border-slate-800 flex flex-col h-full lg:h-screen sticky top-0 print:hidden transition-colors shadow-xs">
       {/* Top Header: Cashier profile matching mockup */}
-      <div className="p-4 sm:p-5 border-b border-sky-100/80 dark:border-slate-800 flex items-center justify-between">
+      <div className="p-3.5 sm:p-5 landscape:p-2.5 border-b border-sky-100/80 dark:border-slate-800 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-sky-500 animate-pulse" />
           <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -211,12 +211,12 @@ export const BillPanel: React.FC<BillPanelProps> = ({ onOpenLoginModal }) => {
       </div>
 
       {/* Bill Footer & Totals */}
-      <div className="p-5 border-t border-sky-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/90 space-y-3">
+      <div className="p-3.5 sm:p-5 landscape:p-2.5 border-t border-sky-100 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/90 space-y-2.5 landscape:space-y-1.5">
         {/* Sky Blue Divider */}
-        <div className="h-0.5 bg-gradient-to-r from-sky-400 to-blue-500 rounded-full w-full mb-3" />
+        <div className="h-0.5 bg-gradient-to-r from-sky-400 to-blue-500 rounded-full w-full mb-2" />
 
         {/* Sub Total */}
-        <div className="flex items-center justify-between text-sm">
+        <div className="flex items-center justify-between text-xs sm:text-sm">
           <span className="font-semibold text-slate-600 dark:text-slate-400">Sub Total</span>
           <span className="font-bold text-slate-900 dark:text-white">
             {formatRupiah(cartTotals.subTotal, false)}
@@ -224,7 +224,7 @@ export const BillPanel: React.FC<BillPanelProps> = ({ onOpenLoginModal }) => {
         </div>
 
         {/* Taxes */}
-        <div className="flex items-center justify-between text-sm">
+        <div className="flex items-center justify-between text-xs sm:text-sm">
           <span className="font-semibold text-slate-600 dark:text-slate-400">Taxes</span>
           <span className="font-bold text-slate-900 dark:text-white">
             {formatRupiah(cartTotals.tax, false)}
@@ -232,25 +232,25 @@ export const BillPanel: React.FC<BillPanelProps> = ({ onOpenLoginModal }) => {
         </div>
 
         {/* Total (Bold prominent text) */}
-        <div className="flex items-center justify-between text-base pt-1">
+        <div className="flex items-center justify-between text-sm sm:text-base pt-0.5">
           <span className="font-extrabold text-slate-900 dark:text-white">Total</span>
-          <span className="text-xl font-black text-sky-600 dark:text-sky-400">
+          <span className="text-lg sm:text-xl font-black text-sky-600 dark:text-sky-400">
             {formatRupiah(cartTotals.total, false)}
           </span>
         </div>
 
         {/* Payment Buttons (Exact structure as seen in the mockup) */}
-        <div className="pt-2 space-y-2.5">
+        <div className="pt-1.5 space-y-2 landscape:space-y-1.5">
           {/* Pay by Cash */}
           <button
             type="button"
             onClick={handleOpenCashPayment}
             disabled={cart.length === 0}
-            className="w-full py-2.5 px-4 rounded-xl border-2 border-sky-500/80 bg-sky-50/70 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 font-bold text-sm flex items-center justify-between hover:bg-sky-100/70 dark:hover:bg-sky-900/50 disabled:opacity-40 disabled:pointer-events-none transition shadow-xs"
+            className="w-full py-2 sm:py-2.5 landscape:py-1.5 px-3.5 rounded-xl border-2 border-sky-500/80 bg-sky-50/70 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 font-bold text-xs sm:text-sm flex items-center justify-between hover:bg-sky-100/70 dark:hover:bg-sky-900/50 disabled:opacity-40 disabled:pointer-events-none transition shadow-xs"
           >
             <span>Pay by Cash</span>
-            <div className="w-8 h-6 rounded border border-sky-400 flex items-center justify-center bg-white dark:bg-slate-900">
-              <Banknote className="w-4 h-4 text-sky-600 dark:text-sky-400" />
+            <div className="w-7 h-5 sm:w-8 sm:h-6 rounded border border-sky-400 flex items-center justify-center bg-white dark:bg-slate-900">
+              <Banknote className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-sky-600 dark:text-sky-400" />
             </div>
           </button>
 
@@ -259,14 +259,14 @@ export const BillPanel: React.FC<BillPanelProps> = ({ onOpenLoginModal }) => {
             type="button"
             onClick={handleOpenDigitalPayment}
             disabled={cart.length === 0}
-            className="w-full py-2.5 px-4 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold text-sm flex items-center justify-between hover:border-sky-300 hover:text-sky-600 dark:hover:bg-slate-700/60 disabled:opacity-40 disabled:pointer-events-none transition shadow-xs"
+            className="w-full py-2 sm:py-2.5 landscape:py-1.5 px-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold text-xs sm:text-sm flex items-center justify-between hover:border-sky-300 hover:text-sky-600 dark:hover:bg-slate-700/60 disabled:opacity-40 disabled:pointer-events-none transition shadow-xs"
           >
             <div className="flex items-center gap-2">
               <span>Pay by Card / QRIS</span>
             </div>
             <div className="flex items-center gap-1.5 text-slate-400">
-              <QrCode className="w-4 h-4" />
-              <CreditCard className="w-4 h-4" />
+              <QrCode className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <CreditCard className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
           </button>
 
@@ -274,7 +274,7 @@ export const BillPanel: React.FC<BillPanelProps> = ({ onOpenLoginModal }) => {
           <button
             type="button"
             onClick={handleDirectPrintOrPreview}
-            className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-sky-500/25 active:scale-98 transition-all"
+            className="w-full py-2.5 sm:py-3.5 landscape:py-2 px-4 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-sky-500/25 active:scale-98 transition-all"
           >
             <span>Invoice Printing</span>
             <Printer className="w-4 h-4" />

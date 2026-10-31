@@ -36,9 +36,9 @@ export const POSView: React.FC<POSViewProps> = ({ onOpenLoginModal }) => {
   });
 
   return (
-    <div className="flex-1 flex flex-col h-full overflow-y-auto bg-slate-100/70 dark:bg-slate-950/80 transition-colors">
+    <div className="flex-1 flex flex-col h-full overflow-y-auto bg-gradient-to-br from-sky-100/80 via-sky-50/50 to-white/90 dark:from-slate-950 dark:via-slate-900/90 dark:to-slate-950 transition-colors">
       {/* Top Header matching reference image with professional light blue accents */}
-      <header className="sticky top-0 z-10 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 sm:px-6 py-3 sm:py-4 border-b border-sky-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 shadow-xs">
+      <header className="sticky top-0 z-10 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-4 sm:px-6 py-2.5 sm:py-3.5 border-b border-sky-100/80 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 sm:gap-4 shadow-xs">
         {/* Left: "Menu List" Title */}
         <div className="flex items-center gap-3">
           <h1 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">

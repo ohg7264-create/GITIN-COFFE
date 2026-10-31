@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply antialiased bg-slate-100/80 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+    @apply antialiased bg-gradient-to-br from-sky-100 via-sky-50 to-white text-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-slate-100 min-h-screen;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 }

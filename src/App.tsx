@@ -48,16 +48,16 @@ const MainLayout: React.FC = () => {
   const lowStockCount = checkLowStockAlerts(products).length;
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen w-screen overflow-hidden bg-slate-100/80 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans transition-colors">
+    <div className="flex flex-col lg:flex-row h-screen w-screen overflow-hidden bg-gradient-to-br from-sky-100 via-sky-50 to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-slate-100 font-sans transition-colors">
       {/* 1. Desktop Left Sidebar Navigation (hidden on mobile, fixed on lg+) */}
       <Sidebar />
 
       {/* 2. Mobile Top Navigation Header (visible only on < lg screens) */}
-      <header className="lg:hidden sticky top-0 z-20 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-3.5 py-2.5 border-b border-sky-100 dark:border-slate-800 flex items-center justify-between print:hidden shadow-xs">
+      <header className="lg:hidden sticky top-0 z-20 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-3.5 py-2 landscape:py-1.5 border-b border-sky-100 dark:border-slate-800 flex items-center justify-between print:hidden shadow-xs">
         <div className="flex items-center gap-2.5">
           <button
             onClick={() => setIsMobileNavOpen(true)}
-            className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-slate-700 transition"
+            className="p-1.5 sm:p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-slate-700 transition"
             aria-label="Buka menu navigasi"
           >
             <Menu className="w-5 h-5" />
@@ -67,10 +67,10 @@ const MainLayout: React.FC = () => {
             onClick={() => setActiveView('pos')}
             className="flex items-center gap-2 text-left"
           >
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-sky-500 to-blue-600 flex items-center justify-center shadow-md shadow-sky-500/20 text-white">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-sky-500 to-blue-600 flex items-center justify-center shadow-md shadow-sky-500/20 text-white">
               <Coffee className="w-4 h-4 stroke-[2.5]" />
             </div>
-            <span className="font-extrabold text-base tracking-tight text-slate-900 dark:text-white">
+            <span className="font-extrabold text-sm sm:text-base tracking-tight text-slate-900 dark:text-white">
               Gitin<span className="text-sky-500 font-black">Coffe</span>
             </span>
           </button>
@@ -80,7 +80,7 @@ const MainLayout: React.FC = () => {
           {/* Dark mode switch */}
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+            className="p-1.5 sm:p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
             aria-label="Toggle mode gelap"
             title={isDarkMode ? 'Mode Terang' : 'Mode Gelap'}
           >
@@ -90,7 +90,7 @@ const MainLayout: React.FC = () => {
           {/* Cashier profile avatar */}
           <button
             onClick={() => setIsLoginModalOpen(true)}
-            className="flex items-center gap-1.5 p-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-semibold hover:ring-2 hover:ring-sky-500 transition"
+            className="flex items-center gap-1.5 p-0.5 sm:p-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-semibold hover:ring-2 hover:ring-sky-500 transition"
             title="Ganti Kasir"
           >
             <img
@@ -99,19 +99,20 @@ const MainLayout: React.FC = () => {
                 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80'
               }
               alt={currentUser?.name}
-              className="w-7 h-7 rounded-full object-cover ring-1 ring-sky-500"
+              className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover ring-1 ring-sky-500"
             />
           </button>
 
-          {/* Mobile Cart Trigger Button */}
+          {/* Mobile Cart / Bill Trigger Button in Header */}
           <button
             onClick={() => setIsMobileBillOpen(true)}
-            className="relative p-2 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold hover:from-sky-600 hover:to-blue-700 shadow-md shadow-sky-500/25 transition"
+            className="relative p-1.5 sm:p-2 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold hover:from-sky-600 hover:to-blue-700 shadow-md shadow-sky-500/25 transition flex items-center gap-1.5"
             aria-label="Buka bill belanja"
           >
             <Receipt className="w-4 h-4" />
+            <span className="hidden sm:inline text-xs font-extrabold">Bill</span>
             {cartTotals.itemCount > 0 && (
-              <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-amber-400 text-slate-900 text-[10px] font-black flex items-center justify-center shadow-xs">
+              <span className="absolute -top-1 -right-1 sm:static w-4 h-4 rounded-full bg-amber-400 text-slate-900 text-[10px] font-black flex items-center justify-center shadow-xs">
                 {cartTotals.itemCount}
               </span>
             )}
@@ -120,7 +121,7 @@ const MainLayout: React.FC = () => {
       </header>
 
       {/* 3. Center Content Area (Scrollable with mobile bottom nav spacing) */}
-      <div className="flex-1 flex overflow-hidden relative pb-16 lg:pb-0">
+      <div className="flex-1 flex overflow-hidden relative pb-16 landscape:pb-12 lg:pb-0">
         {activeView === 'pos' && (
           <POSView onOpenLoginModal={() => setIsLoginModalOpen(true)} />
         )}
@@ -155,83 +156,111 @@ const MainLayout: React.FC = () => {
           </div>
         )}
 
-        {/* 4. Desktop Right Bill Panel (Fixed right sidebar on desktop, hidden on mobile) */}
+        {/* 4. Desktop Right Bill Panel (Fixed right sidebar on desktop, visible on lg+) */}
         {activeView === 'pos' && (
-          <div className="hidden xl:block">
+          <div className="hidden lg:block">
             <BillPanel onOpenLoginModal={() => setIsLoginModalOpen(true)} />
+          </div>
+        )}
+
+        {/* 4b. Floating Menu Bar Bill (Ensures bill is always accessible in mobile landscape and portrait) */}
+        {activeView === 'pos' && (
+          <div className="lg:hidden fixed bottom-16 landscape:bottom-12 right-3 z-30 pointer-events-auto">
+            <button
+              onClick={() => setIsMobileBillOpen(true)}
+              className="flex items-center gap-2 bg-gradient-to-r from-sky-500 via-sky-600 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white pl-3 pr-3.5 py-1.5 sm:py-2 rounded-full shadow-lg shadow-sky-500/35 border border-white/30 backdrop-blur-xs active:scale-95 transition"
+              aria-label="Buka Menu Bill"
+            >
+              <div className="relative flex items-center justify-center">
+                <Receipt className="w-4 h-4 stroke-[2.5]" />
+                {cartTotals.itemCount > 0 && (
+                  <span className="absolute -top-1.5 -right-2 px-1 rounded-full bg-amber-400 text-slate-900 text-[9px] font-black leading-none py-0.5 shadow-xs">
+                    {cartTotals.itemCount}
+                  </span>
+                )}
+              </div>
+              <span className="text-xs font-bold tracking-tight">
+                Menu Bill
+              </span>
+              {cartTotals.total > 0 && (
+                <span className="text-[11px] font-extrabold bg-white/20 px-2 py-0.5 rounded-full">
+                  {formatRupiah(cartTotals.total, false)}
+                </span>
+              )}
+            </button>
           </div>
         )}
       </div>
 
       {/* 5. Mobile Bottom Navigation Bar (thumb friendly for smartphone use) */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-sky-100 dark:border-slate-800 flex items-center justify-around py-1.5 px-2 print:hidden shadow-lg">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-sky-100 dark:border-slate-800 flex items-center justify-around py-1 sm:py-1.5 px-2 landscape:py-0.5 print:hidden shadow-lg">
         <button
           onClick={() => setActiveView('pos')}
-          className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl transition ${
+          className={`flex flex-col items-center gap-0.5 sm:gap-1 py-1 px-2.5 rounded-xl transition ${
             activeView === 'pos'
               ? 'text-sky-600 dark:text-sky-400 font-bold'
               : 'text-slate-500 dark:text-slate-400 font-medium'
           }`}
         >
-          <ShoppingBag className="w-5 h-5" />
-          <span className="text-[10px]">Kasir</span>
+          <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5" />
+          <span className="text-[9px] sm:text-[10px]">Kasir</span>
         </button>
 
         <button
           onClick={() => setActiveView('stock')}
-          className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl relative transition ${
+          className={`flex flex-col items-center gap-0.5 sm:gap-1 py-1 px-2.5 rounded-xl relative transition ${
             activeView === 'stock'
               ? 'text-sky-600 dark:text-sky-400 font-bold'
               : 'text-slate-500 dark:text-slate-400 font-medium'
           }`}
         >
           <div className="relative">
-            <Package className="w-5 h-5" />
+            <Package className="w-4 h-4 sm:w-5 sm:h-5" />
             {lowStockCount > 0 && (
               <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
             )}
           </div>
-          <span className="text-[10px]">Stok</span>
+          <span className="text-[9px] sm:text-[10px]">Stok</span>
         </button>
 
         <button
           onClick={() => setActiveView('reports')}
-          className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl transition ${
+          className={`flex flex-col items-center gap-0.5 sm:gap-1 py-1 px-2.5 rounded-xl transition ${
             activeView === 'reports'
               ? 'text-sky-600 dark:text-sky-400 font-bold'
               : 'text-slate-500 dark:text-slate-400 font-medium'
           }`}
         >
-          <FileText className="w-5 h-5" />
-          <span className="text-[10px]">Laporan</span>
+          <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
+          <span className="text-[9px] sm:text-[10px]">Laporan</span>
         </button>
 
         <button
           onClick={() => setActiveView('analytics')}
-          className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl transition ${
+          className={`flex flex-col items-center gap-0.5 sm:gap-1 py-1 px-2.5 rounded-xl transition ${
             activeView === 'analytics'
               ? 'text-sky-600 dark:text-sky-400 font-bold'
               : 'text-slate-500 dark:text-slate-400 font-medium'
           }`}
         >
-          <LayoutDashboard className="w-5 h-5" />
-          <span className="text-[10px]">Analitik</span>
+          <LayoutDashboard className="w-4 h-4 sm:w-5 sm:h-5" />
+          <span className="text-[9px] sm:text-[10px]">Analitik</span>
         </button>
 
-        {/* Mobile Bill trigger with total */}
+        {/* Mobile Bill menu button with total */}
         <button
           onClick={() => setIsMobileBillOpen(true)}
-          className="flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl text-sky-600 dark:text-sky-400 relative font-bold"
+          className="flex flex-col items-center gap-0.5 sm:gap-1 py-1 px-2.5 rounded-xl text-sky-600 dark:text-sky-400 relative font-bold"
         >
           <div className="relative">
-            <Receipt className="w-5 h-5" />
+            <Receipt className="w-4 h-4 sm:w-5 sm:h-5" />
             {cartTotals.itemCount > 0 && (
               <span className="absolute -top-1.5 -right-2 px-1 rounded-full bg-sky-500 text-white text-[9px] font-black">
                 {cartTotals.itemCount}
               </span>
             )}
           </div>
-          <span className="text-[10px]">
+          <span className="text-[9px] sm:text-[10px]">
             {cartTotals.total > 0 ? formatRupiah(cartTotals.total, false) : 'Bill'}
           </span>
         </button>
@@ -253,18 +282,18 @@ const MainLayout: React.FC = () => {
         </div>
       )}
 
-      {/* 7. Mobile Bill Slide-over Drawer */}
+      {/* 7. Mobile Bill Slide-over Drawer (visible on < lg screens) */}
       {isMobileBillOpen && (
-        <div className="xl:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex justify-end animate-in fade-in duration-150 print:hidden">
+        <div className="lg:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex justify-end animate-in fade-in duration-150 print:hidden">
           <div
             className="flex-1 h-full"
             onClick={() => setIsMobileBillOpen(false)}
           />
-          <div className="w-full max-w-md bg-white dark:bg-slate-900 h-full relative flex flex-col shadow-2xl animate-in slide-in-from-right duration-200">
-            <div className="absolute top-4 right-4 z-20">
+          <div className="w-full sm:w-96 max-w-full bg-white dark:bg-slate-900 h-full relative flex flex-col shadow-2xl animate-in slide-in-from-right duration-200 overflow-y-auto">
+            <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20">
               <button
                 onClick={() => setIsMobileBillOpen(false)}
-                className="p-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-slate-100"
+                className="p-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-slate-100 shadow-xs"
                 aria-label="Tutup bill"
               >
                 <X className="w-5 h-5" />
