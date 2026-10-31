@@ -107,7 +107,7 @@ export const POSView: React.FC<POSViewProps> = ({ onOpenLoginModal }) => {
       </div>
 
       {/* Main Product Cards List */}
-      <main className="p-4 sm:p-6 space-y-4 flex-1">
+      <main className="p-4 sm:p-6 pb-28 sm:pb-32 lg:pb-12 space-y-5 sm:space-y-6 flex-1">
         {filteredProducts.length === 0 ? (
           <div className="bg-white dark:bg-slate-900 border border-sky-100 dark:border-slate-800 rounded-2xl p-12 text-center text-slate-400 max-w-lg mx-auto my-12 shadow-sm">
             <Search className="w-10 h-10 mx-auto mb-3 stroke-[1.5] text-sky-400" />
