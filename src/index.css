@@ -4,9 +4,42 @@
 
 @layer base {
   body {
-    @apply antialiased bg-stone-100 text-stone-900 dark:bg-stone-950 dark:text-stone-100;
+    @apply antialiased bg-slate-100/80 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(105vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-confetti-fall {
+  animation-name: confetti-fall;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation-fill-mode: forwards;
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 3s ease-in-out infinite;
 }
 
 /* Thermal Printer Media Rules (ESC/POS 58mm & 80mm standard) */

@@ -26,8 +26,7 @@ import {
   Receipt,
   Sun,
   Moon,
-  Database,
-  FolderTree,
+  Coffee,
 } from 'lucide-react';
 import { checkLowStockAlerts, formatRupiah } from './utils/pos-logic';
 
@@ -49,16 +48,16 @@ const MainLayout: React.FC = () => {
   const lowStockCount = checkLowStockAlerts(products).length;
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen w-screen overflow-hidden bg-stone-100 dark:bg-stone-950 text-stone-900 dark:text-stone-100 font-sans transition-colors">
+    <div className="flex flex-col lg:flex-row h-screen w-screen overflow-hidden bg-slate-100/80 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans transition-colors">
       {/* 1. Desktop Left Sidebar Navigation (hidden on mobile, fixed on lg+) */}
       <Sidebar />
 
       {/* 2. Mobile Top Navigation Header (visible only on < lg screens) */}
-      <header className="lg:hidden sticky top-0 z-20 bg-white/95 dark:bg-stone-900/95 backdrop-blur-md px-3.5 py-2.5 border-b border-stone-200/80 dark:border-stone-800 flex items-center justify-between print:hidden">
+      <header className="lg:hidden sticky top-0 z-20 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-3.5 py-2.5 border-b border-sky-100 dark:border-slate-800 flex items-center justify-between print:hidden shadow-xs">
         <div className="flex items-center gap-2.5">
           <button
             onClick={() => setIsMobileNavOpen(true)}
-            className="p-2 rounded-xl bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-200 hover:bg-stone-200 dark:hover:bg-stone-700 transition"
+            className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-slate-700 transition"
             aria-label="Buka menu navigasi"
           >
             <Menu className="w-5 h-5" />
@@ -68,17 +67,11 @@ const MainLayout: React.FC = () => {
             onClick={() => setActiveView('pos')}
             className="flex items-center gap-2 text-left"
           >
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-emerald-700 to-green-500 flex items-center justify-center shadow-xs">
-              <svg className="w-5 h-5 text-white fill-current" viewBox="0 0 32 32" fill="none">
-                <path
-                  d="M12 7C9.23858 7 7 9.23858 7 12V20C7 22.7614 9.23858 25 12 25C14.7614 25 17 22.7614 17 20V12C17 9.23858 14.7614 7 12 7Z"
-                  opacity="0.9"
-                />
-                <path d="M19 14C19 11.2386 21.2386 9 24 9C26.7614 9 29 11.2386 29 14V23C29 24.1046 28.1046 25 27 25H21C19.8954 25 19 24.1046 19 23V14Z" />
-              </svg>
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-sky-500 to-blue-600 flex items-center justify-center shadow-md shadow-sky-500/20 text-white">
+              <Coffee className="w-4 h-4 stroke-[2.5]" />
             </div>
-            <span className="font-extrabold text-base tracking-tight text-stone-900 dark:text-stone-100">
-              Aksara<span className="text-emerald-600">POS</span>
+            <span className="font-extrabold text-base tracking-tight text-slate-900 dark:text-white">
+              Gitin<span className="text-sky-500 font-black">Coffe</span>
             </span>
           </button>
         </div>
@@ -87,7 +80,7 @@ const MainLayout: React.FC = () => {
           {/* Dark mode switch */}
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-xl text-stone-500 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-800 transition"
+            className="p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
             aria-label="Toggle mode gelap"
             title={isDarkMode ? 'Mode Terang' : 'Mode Gelap'}
           >
@@ -97,7 +90,7 @@ const MainLayout: React.FC = () => {
           {/* Cashier profile avatar */}
           <button
             onClick={() => setIsLoginModalOpen(true)}
-            className="flex items-center gap-1.5 p-1 rounded-full bg-stone-100 dark:bg-stone-800 text-xs font-semibold hover:ring-2 hover:ring-emerald-500 transition"
+            className="flex items-center gap-1.5 p-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-semibold hover:ring-2 hover:ring-sky-500 transition"
             title="Ganti Kasir"
           >
             <img
@@ -106,19 +99,19 @@ const MainLayout: React.FC = () => {
                 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80'
               }
               alt={currentUser?.name}
-              className="w-7 h-7 rounded-full object-cover ring-1 ring-emerald-500"
+              className="w-7 h-7 rounded-full object-cover ring-1 ring-sky-500"
             />
           </button>
 
           {/* Mobile Cart Trigger Button */}
           <button
             onClick={() => setIsMobileBillOpen(true)}
-            className="relative p-2 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700 transition"
+            className="relative p-2 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold hover:from-sky-600 hover:to-blue-700 shadow-md shadow-sky-500/25 transition"
             aria-label="Buka bill belanja"
           >
             <Receipt className="w-4 h-4" />
             {cartTotals.itemCount > 0 && (
-              <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-amber-400 text-stone-900 text-[10px] font-black flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-amber-400 text-slate-900 text-[10px] font-black flex items-center justify-center shadow-xs">
                 {cartTotals.itemCount}
               </span>
             )}
@@ -171,13 +164,13 @@ const MainLayout: React.FC = () => {
       </div>
 
       {/* 5. Mobile Bottom Navigation Bar (thumb friendly for smartphone use) */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/95 dark:bg-stone-900/95 backdrop-blur-md border-t border-stone-200 dark:border-stone-800 flex items-center justify-around py-1.5 px-2 print:hidden shadow-lg">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-sky-100 dark:border-slate-800 flex items-center justify-around py-1.5 px-2 print:hidden shadow-lg">
         <button
           onClick={() => setActiveView('pos')}
           className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl transition ${
             activeView === 'pos'
-              ? 'text-emerald-600 dark:text-emerald-400 font-bold'
-              : 'text-stone-500 dark:text-stone-400 font-medium'
+              ? 'text-sky-600 dark:text-sky-400 font-bold'
+              : 'text-slate-500 dark:text-slate-400 font-medium'
           }`}
         >
           <ShoppingBag className="w-5 h-5" />
@@ -188,8 +181,8 @@ const MainLayout: React.FC = () => {
           onClick={() => setActiveView('stock')}
           className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl relative transition ${
             activeView === 'stock'
-              ? 'text-emerald-600 dark:text-emerald-400 font-bold'
-              : 'text-stone-500 dark:text-stone-400 font-medium'
+              ? 'text-sky-600 dark:text-sky-400 font-bold'
+              : 'text-slate-500 dark:text-slate-400 font-medium'
           }`}
         >
           <div className="relative">
@@ -205,8 +198,8 @@ const MainLayout: React.FC = () => {
           onClick={() => setActiveView('reports')}
           className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl transition ${
             activeView === 'reports'
-              ? 'text-emerald-600 dark:text-emerald-400 font-bold'
-              : 'text-stone-500 dark:text-stone-400 font-medium'
+              ? 'text-sky-600 dark:text-sky-400 font-bold'
+              : 'text-slate-500 dark:text-slate-400 font-medium'
           }`}
         >
           <FileText className="w-5 h-5" />
@@ -217,8 +210,8 @@ const MainLayout: React.FC = () => {
           onClick={() => setActiveView('analytics')}
           className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl transition ${
             activeView === 'analytics'
-              ? 'text-emerald-600 dark:text-emerald-400 font-bold'
-              : 'text-stone-500 dark:text-stone-400 font-medium'
+              ? 'text-sky-600 dark:text-sky-400 font-bold'
+              : 'text-slate-500 dark:text-slate-400 font-medium'
           }`}
         >
           <LayoutDashboard className="w-5 h-5" />
@@ -228,12 +221,12 @@ const MainLayout: React.FC = () => {
         {/* Mobile Bill trigger with total */}
         <button
           onClick={() => setIsMobileBillOpen(true)}
-          className="flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl text-emerald-700 dark:text-emerald-400 relative font-bold"
+          className="flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl text-sky-600 dark:text-sky-400 relative font-bold"
         >
           <div className="relative">
             <Receipt className="w-5 h-5" />
             {cartTotals.itemCount > 0 && (
-              <span className="absolute -top-1.5 -right-2 px-1 rounded-full bg-emerald-600 text-white text-[9px] font-black">
+              <span className="absolute -top-1.5 -right-2 px-1 rounded-full bg-sky-500 text-white text-[9px] font-black">
                 {cartTotals.itemCount}
               </span>
             )}
@@ -247,7 +240,7 @@ const MainLayout: React.FC = () => {
       {/* 6. Mobile Sidebar Navigation Drawer (opened via hamburger icon) */}
       {isMobileNavOpen && (
         <div className="lg:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex animate-in fade-in duration-150 print:hidden">
-          <div className="w-4/5 max-w-xs bg-white dark:bg-stone-900 h-full relative flex flex-col shadow-2xl animate-in slide-in-from-left duration-200">
+          <div className="w-4/5 max-w-xs bg-white dark:bg-slate-900 h-full relative flex flex-col shadow-2xl animate-in slide-in-from-left duration-200">
             <Sidebar
               isMobileDrawer={true}
               onCloseMobile={() => setIsMobileNavOpen(false)}
@@ -267,11 +260,11 @@ const MainLayout: React.FC = () => {
             className="flex-1 h-full"
             onClick={() => setIsMobileBillOpen(false)}
           />
-          <div className="w-full max-w-md bg-white dark:bg-stone-900 h-full relative flex flex-col shadow-2xl animate-in slide-in-from-right duration-200">
+          <div className="w-full max-w-md bg-white dark:bg-slate-900 h-full relative flex flex-col shadow-2xl animate-in slide-in-from-right duration-200">
             <div className="absolute top-4 right-4 z-20">
               <button
                 onClick={() => setIsMobileBillOpen(false)}
-                className="p-1.5 rounded-xl bg-stone-100 dark:bg-stone-800 text-stone-500 hover:text-stone-800 dark:hover:text-stone-100"
+                className="p-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-slate-100"
                 aria-label="Tutup bill"
               >
                 <X className="w-5 h-5" />

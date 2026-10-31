@@ -24,6 +24,7 @@ import {
   calculateChange,
   generateInvoiceNumber,
 } from '../utils/pos-logic';
+import { soundEffects } from '../utils/sound';
 
 export type ActiveView = 'pos' | 'stock' | 'reports' | 'analytics' | 'master' | 'settings';
 
@@ -111,15 +112,15 @@ interface POSContextType {
 const POSContext = createContext<POSContextType | undefined>(undefined);
 
 const STORAGE_KEYS = {
-  THEME: 'aksara_pos_dark_mode',
-  PRODUCTS: 'aksara_pos_products',
-  CATEGORIES: 'aksara_pos_categories',
-  TOPPINGS: 'aksara_pos_toppings',
-  USERS: 'aksara_pos_users',
-  CURRENT_USER: 'aksara_pos_current_user',
-  SETTINGS: 'aksara_pos_settings',
-  TRANSACTIONS: 'aksara_pos_transactions',
-  STOCK_LOGS: 'aksara_pos_stock_logs',
+  THEME: 'gitin_coffe_dark_mode',
+  PRODUCTS: 'gitin_coffe_products',
+  CATEGORIES: 'gitin_coffe_categories',
+  TOPPINGS: 'gitin_coffe_toppings',
+  USERS: 'gitin_coffe_users',
+  CURRENT_USER: 'gitin_coffe_current_user',
+  SETTINGS: 'gitin_coffe_settings',
+  TRANSACTIONS: 'gitin_coffe_transactions',
+  STOCK_LOGS: 'gitin_coffe_stock_logs',
 };
 
 export const POSProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -230,7 +231,7 @@ export const POSProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         const parsed: User[] = JSON.parse(saved);
         return parsed.map(u =>
           u.id === 'user-01' || u.name === 'Kalia Janet'
-            ? { ...u, name: 'Gitin Arifysa Fadilah', username: 'gitin', email: 'gitin@aksarapos.id' }
+            ? { ...u, name: 'Gitin Arifysa Fadilah', username: 'gitin', email: 'gitin@gitincoffe.id' }
             : u
         );
       }
@@ -246,7 +247,7 @@ export const POSProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       if (saved) {
         const parsed: User = JSON.parse(saved);
         if (parsed.id === 'user-01' || parsed.name === 'Kalia Janet') {
-          return { ...parsed, name: 'Gitin Arifysa Fadilah', username: 'gitin', email: 'gitin@aksarapos.id' };
+          return { ...parsed, name: 'Gitin Arifysa Fadilah', username: 'gitin', email: 'gitin@gitincoffe.id' };
         }
         return parsed;
       }
@@ -471,6 +472,9 @@ export const POSProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     // Save transaction
     setTransactions(prev => [newTx, ...prev]);
 
+    // Play payment success sound effect
+    soundEffects.playPaymentSuccess();
+
     // Clear cart and prepare receipt
     clearCart();
     setCurrentReceiptTx(newTx);
@@ -572,7 +576,7 @@ export const POSProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Backup & Restore
   const exportBackupJSON = () => {
     const backupData = {
-      appName: 'Aksara POS',
+      appName: 'Gitin Coffe',
       version: '1.0.0',
       exportedAt: new Date().toISOString(),
       storeSettings,
@@ -589,7 +593,7 @@ export const POSProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const a = document.createElement('a');
     const dateStr = new Date().toISOString().slice(0, 10);
     a.href = url;
-    a.download = `aksara_pos_backup_${dateStr}.json`;
+    a.download = `gitin_coffe_backup_${dateStr}.json`;
     a.click();
     URL.revokeObjectURL(url);
   };

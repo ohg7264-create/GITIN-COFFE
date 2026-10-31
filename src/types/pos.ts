@@ -1,5 +1,5 @@
 /**
- * Aksara POS - Type Definitions
+ * Gitin Coffe POS - Type Definitions
  */
 
 export type ItemType = 'drink' | 'food';

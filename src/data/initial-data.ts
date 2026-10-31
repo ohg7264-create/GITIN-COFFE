@@ -569,7 +569,7 @@ export const INITIAL_USERS: User[] = [
     role: 'kasir',
     pin: '1234',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
-    email: 'gitin@aksarapos.id',
+    email: 'gitin@gitincoffe.id',
   },
   {
     id: 'user-02',
@@ -578,19 +578,19 @@ export const INITIAL_USERS: User[] = [
     role: 'admin',
     pin: '8888',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
-    email: 'admin@aksarapos.id',
+    email: 'admin@gitincoffe.id',
   },
 ];
 
 export const INITIAL_SETTINGS: StoreSettings = {
-  storeName: 'Aksara Cafe & Eatery',
+  storeName: 'Gitin Coffe',
   storeTagline: 'Artisan Coffee, Food & Good Vibes',
   address: 'Jl. Senopati Raya No. 42, Kebayoran Baru, Jakarta Selatan',
   phone: '0812-8899-2345',
   taxRate: 0.0408, // ~4.000 on 98.000 as in mockup
   enableTax: true,
   currency: 'Rp',
-  receiptFooter: 'Terima kasih atas kunjungan Anda!\nFollow Instagram kami @aksaracafe.id',
+  receiptFooter: 'Terima kasih atas kunjungan Anda!\nFollow Instagram kami @gitincoffe.id',
   paperSize: '58mm',
   autoBackupDaily: true,
   lastBackupDate: new Date().toISOString(),
