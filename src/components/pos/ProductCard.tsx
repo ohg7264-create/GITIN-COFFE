@@ -72,19 +72,29 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const isOutOfStock = product.stock <= 0;
 
   return (
-    <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200/90 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-md hover:shadow-xl transition-all relative overflow-hidden">
-      {/* 1. Header: Product Name + Price (Besar, Bold, Tegas) */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-4 mb-4 border-b border-slate-100 dark:border-slate-800/80">
-        <h3 className="font-black text-lg sm:text-xl md:text-2xl text-slate-900 dark:text-white tracking-tight flex items-center gap-2 flex-1 min-w-0">
-          {product.code ? (
-            <span className="text-sky-600 dark:text-sky-400 font-black flex-shrink-0">
-              {product.code}.
-            </span>
-          ) : null}
-          <span className="truncate">{product.name}</span>
-        </h3>
+    <div
+      style={{ contentVisibility: 'auto', containIntrinsicSize: '360px' }}
+      className="bg-white/98 dark:bg-slate-900/98 border border-slate-200/90 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-md hover:shadow-xl transition-shadow relative overflow-hidden"
+    >
+      {/* 1. Header: Product Name + Description + Price (Besar, Bold, Tegas) */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-3.5 mb-4 border-b border-slate-100 dark:border-slate-800/80">
+        <div className="flex-1 min-w-0 pr-2">
+          <h3 className="font-black text-lg sm:text-xl md:text-2xl text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+            {product.code ? (
+              <span className="text-sky-600 dark:text-sky-400 font-black flex-shrink-0">
+                {product.code}.
+              </span>
+            ) : null}
+            <span className="truncate">{product.name}</span>
+          </h3>
+          {product.description && (
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 line-clamp-1 font-medium">
+              {product.description}
+            </p>
+          )}
+        </div>
 
-        <div className="flex items-center gap-2.5 flex-shrink-0 self-start sm:self-auto">
+        <div className="flex items-center gap-2.5 flex-shrink-0 self-start sm:self-center">
           {product.stock <= product.minStockAlert && !isOutOfStock && (
             <span className="text-xs sm:text-sm font-bold px-3 py-1 rounded-xl bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
               Sisa {product.stock}
@@ -103,19 +113,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
       {/* 2. Middle Row: Image on left + Modifiers on right */}
       <div className="flex flex-col sm:flex-row gap-5 sm:gap-6 items-start">
-        {/* Left: Product Image */}
-        <div className="relative w-full sm:w-44 md:w-52 lg:w-56 h-40 sm:h-48 md:h-52 lg:h-auto lg:min-h-[220px] flex-shrink-0 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 shadow-inner">
+        {/* Left: Product Image (Spacious, fills and fits the entire box 100% edge-to-edge) */}
+        <div className="relative w-full sm:w-56 md:w-60 lg:w-64 h-56 sm:h-auto sm:self-stretch min-h-[210px] sm:min-h-[250px] flex-shrink-0 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 shadow-inner group">
           <img
             src={product.image}
             alt={product.name}
-            className={`w-full h-full object-cover ${isOutOfStock ? 'grayscale opacity-60' : ''}`}
+            className={`absolute inset-0 w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105 ${
+              isOutOfStock ? 'grayscale opacity-60' : ''
+            }`}
             loading="lazy"
+            decoding="async"
           />
-          {product.description && (
-            <div className="absolute inset-x-0 bottom-0 p-2 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-transparent text-xs text-white/95 line-clamp-2 text-center font-medium">
-              {product.description}
-            </div>
-          )}
         </div>
 
         {/* Right: Modifiers Grid (Amount, Sugar, Size, Ice) */}

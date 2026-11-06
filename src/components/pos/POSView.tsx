@@ -36,7 +36,7 @@ export const POSView: React.FC<POSViewProps> = ({ onOpenLoginModal }) => {
   });
 
   return (
-    <div className="flex-1 flex flex-col h-full overflow-y-auto bg-transparent transition-colors relative z-10">
+    <div className="flex-1 flex flex-col h-full overflow-y-auto bg-transparent relative z-10 overscroll-y-contain transform-gpu [webkit-overflow-scrolling:touch]">
       {/* Unified Sticky Header containing Search Bar and Category Menu Bar - never scrolls away */}
       <div className="sticky top-0 z-20 bg-white/75 dark:bg-slate-900/80 backdrop-blur-md border-b border-sky-200/60 dark:border-slate-800/80 shadow-xs">
         {/* Top Header matching reference image with professional light blue accents */}

@@ -218,10 +218,17 @@ export const POSProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       const saved = localStorage.getItem(STORAGE_KEYS.PRODUCTS);
       if (saved) {
         const parsed: Product[] = JSON.parse(saved);
-        // Merge any new products from INITIAL_PRODUCTS that aren't yet in saved state
-        const existingIds = new Set(parsed.map(p => p.id));
+        const initialMap = new Map(INITIAL_PRODUCTS.map(p => [p.id, p]));
+        const merged = parsed.map(p => {
+          const init = initialMap.get(p.id);
+          if (init && init.image) {
+            return { ...p, image: init.image };
+          }
+          return p;
+        });
+        const existingIds = new Set(merged.map(p => p.id));
         const missing = INITIAL_PRODUCTS.filter(p => !existingIds.has(p.id));
-        return [...parsed, ...missing];
+        return [...merged, ...missing];
       }
       return INITIAL_PRODUCTS;
     } catch {

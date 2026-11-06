@@ -32,6 +32,8 @@ export const MegamendungBackground: React.FC<MegamendungBackgroundProps> = ({
           backgroundImage: `url('/assets/aistudio/batik-mega_34341792.png')`,
           backgroundSize: bgSize,
           opacity,
+          transform: 'translateZ(0)',
+          willChange: 'transform',
         }}
       />
 
