@@ -247,8 +247,14 @@ export const POSProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       if (saved) {
         let parsed: User[] = JSON.parse(saved);
         parsed = parsed.map(u => {
-          if (u.role === 'admin' || u.name === 'Budi Santoso') {
-            return { ...u, name: 'Gitin', username: 'admin', email: 'gitin@gitincoffe.id' };
+          if (u.role === 'admin' || u.name === 'Budi Santoso' || u.name === 'Gitin') {
+            return {
+              ...u,
+              name: 'Gitin',
+              username: 'admin',
+              email: 'gitin@gitincoffe.id',
+              avatar: '/assets/aistudio/WhatsApp_Image_2026-11-06_at_19.34.27_e181dd25.jpeg',
+            };
           }
           if (u.id === 'user-01' || u.name === 'Kalia Janet') {
             return { ...u, name: 'Gitin Arifysa Fadilah', username: 'kasir', email: 'kasir@gitincoffe.id' };
@@ -281,8 +287,17 @@ export const POSProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       const saved = localStorage.getItem(STORAGE_KEYS.CURRENT_USER);
       if (saved) {
         const parsed: User = JSON.parse(saved);
+        if (parsed.role === 'admin' || parsed.name === 'Gitin') {
+          return {
+            ...parsed,
+            name: 'Gitin',
+            username: 'admin',
+            email: 'gitin@gitincoffe.id',
+            avatar: '/assets/aistudio/WhatsApp_Image_2026-11-06_at_19.34.27_e181dd25.jpeg',
+          };
+        }
         if (parsed.id === 'user-01' || parsed.name === 'Kalia Janet') {
-          return { ...parsed, name: 'Gitin Arifysa Fadilah', username: 'gitin', email: 'gitin@gitincoffe.id' };
+          return { ...parsed, name: 'Gitin Arifysa Fadilah', username: 'kasir', email: 'kasir@gitincoffe.id' };
         }
         return parsed;
       }

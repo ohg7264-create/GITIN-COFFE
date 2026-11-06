@@ -577,7 +577,7 @@ export const INITIAL_USERS: User[] = [
     username: 'admin',
     role: 'admin',
     pin: '8888',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+    avatar: '/assets/aistudio/WhatsApp_Image_2026-11-06_at_19.34.27_e181dd25.jpeg',
     email: 'gitin@gitincoffe.id',
   },
   {

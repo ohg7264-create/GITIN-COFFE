@@ -25,20 +25,21 @@ export const MegamendungBackground: React.FC<MegamendungBackgroundProps> = ({
       className={`fixed inset-0 pointer-events-none z-0 select-none overflow-hidden ${className}`}
       aria-hidden="true"
     >
-      {/* 1. Full-screen repeating Batik Megamendung pattern directly from user image asset */}
+      {/* 1. Full-screen repeating Batik Megamendung pattern with warm orange hue transformation */}
       <div
         className="absolute inset-0 bg-repeat bg-center transition-opacity duration-300"
         style={{
           backgroundImage: `url('/assets/aistudio/batik-mega_34341792.png')`,
           backgroundSize: bgSize,
           opacity,
+          filter: 'sepia(0.9) saturate(2.5) hue-rotate(335deg)',
           transform: 'translateZ(0)',
           willChange: 'transform',
         }}
       />
 
-      {/* 2. Soft translucent overlay gradient so content remains readable while batik shines across the entire screen */}
-      <div className="absolute inset-0 bg-gradient-to-br from-sky-100/40 via-sky-50/20 to-white/35 dark:from-slate-950/70 dark:via-slate-900/60 dark:to-slate-950/75" />
+      {/* 2. Soft warm orange overlay gradient so content remains readable while orange batik shines */}
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-100/45 via-orange-50/25 to-white/40 dark:from-slate-950/75 dark:via-slate-900/65 dark:to-slate-950/80" />
     </div>
   );
 };

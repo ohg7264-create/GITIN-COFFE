@@ -49,19 +49,19 @@ const MainLayout: React.FC = () => {
   const lowStockCount = checkLowStockAlerts(products).length;
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen w-screen overflow-hidden bg-gradient-to-br from-sky-100 via-sky-50 to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-slate-100 font-sans transition-colors relative">
-      {/* Authentic Cirebon Batik Megamendung Ambient Background Motif (Biru Muda) */}
+    <div className="flex flex-col lg:flex-row h-screen w-screen overflow-hidden bg-gradient-to-br from-amber-100/70 via-orange-50/40 to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-slate-100 font-sans transition-colors relative">
+      {/* Authentic Cirebon Batik Megamendung Ambient Background Motif (Orange) */}
       <MegamendungBackground />
 
       {/* 1. Desktop Left Sidebar Navigation (hidden on mobile, fixed on lg+) */}
       <Sidebar />
 
       {/* 2. Mobile Top Navigation Header (visible only on < lg screens) */}
-      <header className="lg:hidden sticky top-0 z-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md px-3 sm:px-4 py-2 landscape:py-1 border-b border-sky-200/50 dark:border-slate-800 flex items-center justify-between print:hidden shadow-xs">
+      <header className="lg:hidden sticky top-0 z-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md px-3 sm:px-4 py-2 landscape:py-1 border-b border-orange-200/50 dark:border-slate-800 flex items-center justify-between print:hidden shadow-xs">
         <div className="flex items-center gap-2">
           <button
             onClick={() => setIsMobileNavOpen(true)}
-            className="p-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-slate-700 transition"
+            className="p-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-orange-50 dark:hover:bg-slate-700 transition"
             aria-label="Buka menu navigasi"
           >
             <Menu className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -71,11 +71,11 @@ const MainLayout: React.FC = () => {
             onClick={() => setActiveView('pos')}
             className="flex items-center gap-1.5 sm:gap-2 text-left"
           >
-            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-sky-500 to-blue-600 flex items-center justify-center shadow-xs text-white">
+            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center shadow-xs text-white">
               <Coffee className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
             </div>
             <span className="font-extrabold text-xs sm:text-base tracking-tight text-slate-900 dark:text-white">
-              Gitin<span className="text-sky-500 font-black">Coffe</span>
+              Gitin<span className="text-orange-500 font-black">Coffe</span>
             </span>
           </button>
         </div>
@@ -94,7 +94,7 @@ const MainLayout: React.FC = () => {
           {/* Cashier profile avatar */}
           <button
             onClick={() => setIsLoginModalOpen(true)}
-            className="flex items-center gap-1 p-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-semibold hover:ring-2 hover:ring-sky-500 transition"
+            className="flex items-center gap-1 p-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-semibold hover:ring-2 hover:ring-orange-500 transition"
             title="Ganti Kasir"
           >
             <img
@@ -103,14 +103,14 @@ const MainLayout: React.FC = () => {
                 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80'
               }
               alt={currentUser?.name}
-              className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover ring-1 ring-sky-500"
+              className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover ring-1 ring-orange-500"
             />
           </button>
 
           {/* Mobile Cart / Bill Trigger Button in Header */}
           <button
             onClick={() => setIsMobileBillOpen(true)}
-            className="relative p-1.5 sm:p-2 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold hover:from-sky-600 hover:to-blue-700 shadow-md shadow-sky-500/25 transition flex items-center gap-1.5"
+            className="relative p-1.5 sm:p-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold hover:from-amber-600 hover:to-orange-700 shadow-md shadow-orange-500/25 transition flex items-center gap-1.5"
             aria-label="Buka bill belanja"
           >
             <Receipt className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -172,7 +172,7 @@ const MainLayout: React.FC = () => {
           <div className="lg:hidden fixed bottom-14 landscape:bottom-11 right-3 z-30 pointer-events-auto">
             <button
               onClick={() => setIsMobileBillOpen(true)}
-              className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-sky-500 via-sky-600 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white pl-2.5 sm:pl-3 pr-3 py-1.5 rounded-full shadow-lg shadow-sky-500/35 border border-white/30 backdrop-blur-xs active:scale-95 transition"
+              className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-amber-500 via-orange-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white pl-2.5 sm:pl-3 pr-3 py-1.5 rounded-full shadow-lg shadow-orange-500/35 border border-white/30 backdrop-blur-xs active:scale-95 transition"
               aria-label="Buka Menu Bill"
             >
               <div className="relative flex items-center justify-center">
@@ -197,12 +197,12 @@ const MainLayout: React.FC = () => {
       </div>
 
       {/* 5. Mobile Bottom Navigation Bar (thumb friendly for smartphone use) */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-sky-200/50 dark:border-slate-800 flex items-center justify-around py-1 px-2 landscape:py-0.5 print:hidden shadow-lg">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-orange-200/50 dark:border-slate-800 flex items-center justify-around py-1 px-2 landscape:py-0.5 print:hidden shadow-lg">
         <button
           onClick={() => setActiveView('pos')}
           className={`flex flex-col items-center gap-0.5 py-1 px-2 sm:px-2.5 rounded-xl transition landscape:py-0.5 ${
             activeView === 'pos'
-              ? 'text-sky-600 dark:text-sky-400 font-bold'
+              ? 'text-orange-600 dark:text-orange-400 font-bold'
               : 'text-slate-500 dark:text-slate-400 font-medium'
           }`}
         >
@@ -214,7 +214,7 @@ const MainLayout: React.FC = () => {
           onClick={() => setActiveView('stock')}
           className={`flex flex-col items-center gap-0.5 py-1 px-2 sm:px-2.5 rounded-xl relative transition landscape:py-0.5 ${
             activeView === 'stock'
-              ? 'text-sky-600 dark:text-sky-400 font-bold'
+              ? 'text-orange-600 dark:text-orange-400 font-bold'
               : 'text-slate-500 dark:text-slate-400 font-medium'
           }`}
         >
@@ -231,7 +231,7 @@ const MainLayout: React.FC = () => {
           onClick={() => setActiveView('reports')}
           className={`flex flex-col items-center gap-0.5 py-1 px-2 sm:px-2.5 rounded-xl transition landscape:py-0.5 ${
             activeView === 'reports'
-              ? 'text-sky-600 dark:text-sky-400 font-bold'
+              ? 'text-orange-600 dark:text-orange-400 font-bold'
               : 'text-slate-500 dark:text-slate-400 font-medium'
           }`}
         >
@@ -243,7 +243,7 @@ const MainLayout: React.FC = () => {
           onClick={() => setActiveView('analytics')}
           className={`flex flex-col items-center gap-0.5 py-1 px-2 sm:px-2.5 rounded-xl transition landscape:py-0.5 ${
             activeView === 'analytics'
-              ? 'text-sky-600 dark:text-sky-400 font-bold'
+              ? 'text-orange-600 dark:text-orange-400 font-bold'
               : 'text-slate-500 dark:text-slate-400 font-medium'
           }`}
         >
@@ -254,12 +254,12 @@ const MainLayout: React.FC = () => {
         {/* Mobile Bill menu button with total */}
         <button
           onClick={() => setIsMobileBillOpen(true)}
-          className="flex flex-col items-center gap-0.5 py-1 px-2 sm:px-2.5 rounded-xl text-sky-600 dark:text-sky-400 relative font-bold landscape:py-0.5"
+          className="flex flex-col items-center gap-0.5 py-1 px-2 sm:px-2.5 rounded-xl text-orange-600 dark:text-orange-400 relative font-bold landscape:py-0.5"
         >
           <div className="relative">
             <Receipt className="w-4 h-4 sm:w-5 sm:h-5 landscape:w-3.5 landscape:h-3.5" />
             {cartTotals.itemCount > 0 && (
-              <span className="absolute -top-1.5 -right-2 px-1 rounded-full bg-sky-500 text-white text-[9px] font-black">
+              <span className="absolute -top-1.5 -right-2 px-1 rounded-full bg-orange-500 text-white text-[9px] font-black">
                 {cartTotals.itemCount}
               </span>
             )}

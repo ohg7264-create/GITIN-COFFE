@@ -275,7 +275,7 @@ export const MasterDataView: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight flex items-center gap-2.5">
-            <FolderTree className="w-7 h-7 text-sky-600" />
+            <FolderTree className="w-7 h-7 text-orange-600" />
             <span>Manajemen Master Data</span>
           </h1>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
@@ -289,7 +289,7 @@ export const MasterDataView: React.FC = () => {
             onClick={() => setActiveTab('products')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition ${
               activeTab === 'products'
-                ? 'bg-white dark:bg-slate-700 text-sky-700 dark:text-sky-300 shadow-xs'
+                ? 'bg-white dark:bg-slate-700 text-orange-700 dark:text-orange-300 shadow-xs'
                 : 'text-slate-600 dark:text-slate-400'
             }`}
           >
@@ -301,7 +301,7 @@ export const MasterDataView: React.FC = () => {
             onClick={() => setActiveTab('categories')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition ${
               activeTab === 'categories'
-                ? 'bg-white dark:bg-slate-700 text-sky-700 dark:text-sky-300 shadow-xs'
+                ? 'bg-white dark:bg-slate-700 text-orange-700 dark:text-orange-300 shadow-xs'
                 : 'text-slate-600 dark:text-slate-400'
             }`}
           >
@@ -313,7 +313,7 @@ export const MasterDataView: React.FC = () => {
             onClick={() => setActiveTab('toppings')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition ${
               activeTab === 'toppings'
-                ? 'bg-white dark:bg-slate-700 text-sky-700 dark:text-sky-300 shadow-xs'
+                ? 'bg-white dark:bg-slate-700 text-orange-700 dark:text-orange-300 shadow-xs'
                 : 'text-slate-600 dark:text-slate-400'
             }`}
           >
@@ -325,7 +325,7 @@ export const MasterDataView: React.FC = () => {
             onClick={() => setActiveTab('users')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition ${
               activeTab === 'users'
-                ? 'bg-white dark:bg-slate-700 text-sky-700 dark:text-sky-300 shadow-xs'
+                ? 'bg-white dark:bg-slate-700 text-orange-700 dark:text-orange-300 shadow-xs'
                 : 'text-slate-600 dark:text-slate-400'
             }`}
           >
@@ -346,13 +346,13 @@ export const MasterDataView: React.FC = () => {
                 placeholder="Cari produk master..."
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-medium bg-slate-50 dark:bg-slate-800 focus:outline-none focus:border-sky-500 text-slate-900 dark:text-white"
+                className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-medium bg-slate-50 dark:bg-slate-800 focus:outline-none focus:border-orange-500 text-slate-900 dark:text-white"
               />
             </div>
 
             <button
               onClick={() => handleOpenProductModal()}
-              className="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-xs transition"
+              className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-xs transition"
             >
               <Plus className="w-4 h-4" />
               <span>Tambah Produk Baru</span>
@@ -407,7 +407,7 @@ export const MasterDataView: React.FC = () => {
                           <div className="flex items-center justify-end gap-1.5">
                             <button
                               onClick={() => handleOpenProductModal(p)}
-                              className="p-1.5 rounded-lg text-sky-600 hover:bg-sky-50 dark:hover:bg-sky-950/60"
+                              className="p-1.5 rounded-lg text-orange-600 hover:bg-orange-50 dark:hover:bg-orange-950/60"
                               title="Edit Produk"
                             >
                               <Edit2 className="w-4 h-4" />
@@ -443,7 +443,7 @@ export const MasterDataView: React.FC = () => {
             </h3>
             <button
               onClick={() => handleOpenCategoryModal()}
-              className="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-xs transition"
+              className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-xs transition"
             >
               <Plus className="w-4 h-4" />
               <span>Tambah Kategori</span>
@@ -470,7 +470,7 @@ export const MasterDataView: React.FC = () => {
                     <div className="flex items-center gap-1 bg-black/40 rounded-lg p-1 backdrop-blur-xs">
                       <button
                         onClick={() => handleOpenCategoryModal(cat)}
-                        className="p-1 text-white hover:text-sky-400"
+                        className="p-1 text-white hover:text-orange-400"
                         title="Edit Kategori"
                       >
                         <Edit2 className="w-3.5 h-3.5" />
@@ -505,7 +505,7 @@ export const MasterDataView: React.FC = () => {
             </h3>
             <button
               onClick={() => handleOpenToppingModal()}
-              className="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-xs transition"
+              className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-xs transition"
             >
               <Plus className="w-4 h-4" />
               <span>Tambah Topping</span>
@@ -527,7 +527,7 @@ export const MasterDataView: React.FC = () => {
                     <div className="font-bold text-xs text-slate-900 dark:text-slate-100">
                       {t.name}
                     </div>
-                    <div className="text-[11px] text-sky-600 font-semibold">
+                    <div className="text-[11px] text-orange-600 font-semibold">
                       +{formatRupiah(t.price)}
                     </div>
                   </div>
@@ -536,7 +536,7 @@ export const MasterDataView: React.FC = () => {
                 <div className="flex items-center gap-1">
                   <button
                     onClick={() => handleOpenToppingModal(t)}
-                    className="p-1 text-slate-400 hover:text-sky-600"
+                    className="p-1 text-slate-400 hover:text-orange-600"
                   >
                     <Edit2 className="w-3.5 h-3.5" />
                   </button>
@@ -566,7 +566,7 @@ export const MasterDataView: React.FC = () => {
             </h3>
             <button
               onClick={() => handleOpenUserModal()}
-              className="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-xs transition"
+              className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-xs transition"
             >
               <Plus className="w-4 h-4" />
               <span>Tambah Pengguna</span>
@@ -583,7 +583,7 @@ export const MasterDataView: React.FC = () => {
                   <img
                     src={u.avatar}
                     alt={u.name}
-                    className="w-11 h-11 rounded-full object-cover ring-2 ring-sky-600/30"
+                    className="w-11 h-11 rounded-full object-cover ring-2 ring-orange-500/30"
                   />
                   <div>
                     <div className="font-bold text-sm text-slate-900 dark:text-slate-100 flex items-center gap-2">
@@ -594,7 +594,7 @@ export const MasterDataView: React.FC = () => {
                             ? 'bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300'
                             : u.role === 'manager'
                             ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
-                            : 'bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300'
+                            : 'bg-orange-100 text-orange-800 dark:bg-orange-950 dark:text-orange-300'
                         }`}
                       >
                         {u.role}
@@ -610,7 +610,7 @@ export const MasterDataView: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => handleOpenUserModal(u)}
-                    className="p-2 rounded-xl text-slate-500 hover:text-sky-600 hover:bg-slate-100 dark:hover:bg-slate-800"
+                    className="p-2 rounded-xl text-slate-500 hover:text-orange-600 hover:bg-slate-100 dark:hover:bg-slate-800"
                     title="Edit Pengguna"
                   >
                     <Edit2 className="w-4 h-4" />
@@ -785,7 +785,7 @@ export const MasterDataView: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs"
+                  className="px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-xs"
                 >
                   Simpan Produk
                 </button>
@@ -849,7 +849,7 @@ export const MasterDataView: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-sky-600 text-white font-bold text-xs"
+                  className="px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-xs"
                 >
                   Simpan
                 </button>
@@ -915,7 +915,7 @@ export const MasterDataView: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-sky-600 text-white font-bold text-xs"
+                  className="px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-xs"
                 >
                   Simpan
                 </button>
@@ -994,7 +994,7 @@ export const MasterDataView: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-sky-600 text-white font-bold text-xs"
+                  className="px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-xs"
                 >
                   Simpan Pengguna
                 </button>

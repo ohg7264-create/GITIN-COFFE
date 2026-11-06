@@ -31,17 +31,16 @@ export const CelebrationEffect: React.FC<CelebrationEffectProps> = ({
       // Play sound effect cleanly in background
       soundEffects.playPaymentSuccess();
 
-      // Generate confetti particles in professional light blue & white palette
+      // Generate confetti particles in warm orange, amber, and gold palette
       const colors = [
-        '#0284c7', // sky-600
-        '#0ea5e9', // sky-500
-        '#38bdf8', // sky-400
-        '#7dd3fc', // sky-300
-        '#bae6fd', // sky-200
-        '#06b6d4', // cyan-500
-        '#3b82f6', // blue-500
+        '#ea580c', // orange-600
+        '#f97316', // orange-500
+        '#fb923c', // orange-400
+        '#f59e0b', // amber-500
+        '#fbbf24', // amber-400
+        '#fde047', // yellow-300
         '#ffffff', // pure white
-        '#fbbf24', // golden accent
+        '#d97706', // amber-600
       ];
 
       const shapes: ('circle' | 'square' | 'rect')[] = ['circle', 'square', 'rect'];
@@ -85,7 +84,7 @@ export const CelebrationEffect: React.FC<CelebrationEffectProps> = ({
               animationDelay: `${p.delay}s`,
               animationDuration: `${p.duration}s`,
               opacity: 0.9,
-              boxShadow: '0 2px 8px rgba(14, 165, 233, 0.3)',
+              boxShadow: '0 2px 8px rgba(249, 115, 22, 0.35)',
             }}
           />
         ))}

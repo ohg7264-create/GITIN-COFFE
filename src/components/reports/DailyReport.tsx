@@ -80,7 +80,7 @@ export const DailyReport: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight flex items-center gap-2.5">
-            <FileText className="w-7 h-7 text-sky-600" />
+            <FileText className="w-7 h-7 text-orange-600" />
             <span>Laporan Penjualan Harian</span>
           </h1>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
@@ -96,7 +96,7 @@ export const DailyReport: React.FC = () => {
               type="date"
               value={selectedDate}
               onChange={e => setSelectedDate(e.target.value)}
-              className="pl-9 pr-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-bold text-slate-800 dark:text-slate-200 focus:outline-none focus:border-sky-500 shadow-xs"
+              className="pl-9 pr-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-bold text-slate-800 dark:text-slate-200 focus:outline-none focus:border-orange-500 shadow-xs"
             />
           </div>
 
@@ -104,7 +104,7 @@ export const DailyReport: React.FC = () => {
             onClick={() => setSelectedDate(todayStr)}
             className={`px-3 py-2 rounded-xl text-xs font-bold transition ${
               selectedDate === todayStr
-                ? 'bg-sky-600 text-white shadow-xs'
+                ? 'bg-orange-600 text-white shadow-xs'
                 : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200'
             }`}
           >
@@ -123,7 +123,7 @@ export const DailyReport: React.FC = () => {
 
           <button
             onClick={handlePrintDailyReport}
-            className="px-3.5 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-xs transition"
+            className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-xs transition"
             title="Cetak Rekap"
           >
             <Printer className="w-3.5 h-3.5" />
@@ -138,7 +138,7 @@ export const DailyReport: React.FC = () => {
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-xs">
           <div className="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
             <span>Total Pendapatan Kotor</span>
-            <div className="w-8 h-8 rounded-xl bg-sky-50 dark:bg-sky-950 flex items-center justify-center text-sky-600">
+            <div className="w-8 h-8 rounded-xl bg-orange-50 dark:bg-orange-950 flex items-center justify-center text-orange-600">
               <TrendingUp className="w-4 h-4" />
             </div>
           </div>
@@ -204,16 +204,16 @@ export const DailyReport: React.FC = () => {
         {/* Payment Methods Breakdown */}
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-xs">
           <h3 className="font-extrabold text-sm text-slate-900 dark:text-slate-100 mb-3 flex items-center gap-2">
-            <CreditCard className="w-4 h-4 text-sky-600" />
+            <CreditCard className="w-4 h-4 text-orange-600" />
             <span>Penerimaan per Metode Bayar</span>
           </h3>
 
           <div className="space-y-3">
             {[
-              { key: 'cash', label: 'Tunai / Cash', icon: <DollarSign className="w-3.5 h-3.5 text-sky-600" /> },
-              { key: 'qris', label: 'QRIS Dinamis', icon: <QrCode className="w-3.5 h-3.5 text-blue-600" /> },
+              { key: 'cash', label: 'Tunai / Cash', icon: <DollarSign className="w-3.5 h-3.5 text-orange-600" /> },
+              { key: 'qris', label: 'QRIS Dinamis', icon: <QrCode className="w-3.5 h-3.5 text-amber-600" /> },
               { key: 'card', label: 'Kartu Debit/Kredit', icon: <CreditCard className="w-3.5 h-3.5 text-purple-600" /> },
-              { key: 'gopay', label: 'GoPay / E-Wallet', icon: <DollarSign className="w-3.5 h-3.5 text-amber-600" /> },
+              { key: 'gopay', label: 'GoPay / E-Wallet', icon: <DollarSign className="w-3.5 h-3.5 text-orange-500" /> },
             ].map(m => {
               const data = report.paymentMethodBreakdown[m.key] || { count: 0, total: 0 };
               const pct = report.totalGrossSales > 0 ? (data.total / report.totalGrossSales) * 100 : 0;
@@ -229,7 +229,7 @@ export const DailyReport: React.FC = () => {
                   </div>
                   <div className="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
                     <div
-                      className="h-full bg-sky-600 rounded-full transition-all duration-500"
+                      className="h-full bg-orange-600 rounded-full transition-all duration-500"
                       style={{ width: `${pct}%` }}
                     />
                   </div>
@@ -243,7 +243,7 @@ export const DailyReport: React.FC = () => {
         <div className="lg:col-span-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-xs">
           <h3 className="font-extrabold text-sm text-slate-900 dark:text-slate-100 mb-3 flex items-center justify-between">
             <span className="flex items-center gap-2">
-              <TrendingUp className="w-4 h-4 text-sky-600" />
+              <TrendingUp className="w-4 h-4 text-orange-600" />
               <span>Produk Terlaris Hari Ini</span>
             </span>
             <span className="text-xs text-slate-400 font-normal">
@@ -263,7 +263,7 @@ export const DailyReport: React.FC = () => {
                   className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 text-xs font-medium"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="w-6 h-6 rounded-full bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300 font-extrabold flex items-center justify-center text-[11px]">
+                    <span className="w-6 h-6 rounded-full bg-orange-100 text-orange-800 dark:bg-orange-950 dark:text-orange-300 font-extrabold flex items-center justify-center text-[11px]">
                       #{idx + 1}
                     </span>
                     <span className="font-bold text-slate-900 dark:text-slate-100">
@@ -271,7 +271,7 @@ export const DailyReport: React.FC = () => {
                     </span>
                   </div>
                   <div className="text-right">
-                    <span className="font-extrabold text-sky-600 dark:text-sky-400 mr-3">
+                    <span className="font-extrabold text-orange-600 dark:text-orange-400 mr-3">
                       {p.quantity} terjual
                     </span>
                     <span className="font-bold text-slate-800 dark:text-slate-200">
@@ -289,7 +289,7 @@ export const DailyReport: React.FC = () => {
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xs overflow-hidden">
         <div className="p-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
           <h3 className="font-extrabold text-sm text-slate-900 dark:text-slate-100 flex items-center gap-2">
-            <Receipt className="w-4 h-4 text-sky-600" />
+            <Receipt className="w-4 h-4 text-orange-600" />
             <span>Daftar Transaksi ({dailyTransactions.length})</span>
           </h3>
           <span className="text-xs text-slate-400 font-mono">
@@ -342,13 +342,13 @@ export const DailyReport: React.FC = () => {
                           {tx.paymentMethod}
                         </span>
                       </td>
-                      <td className="py-3.5 px-4 text-right font-black text-sky-700 dark:text-sky-400">
+                      <td className="py-3.5 px-4 text-right font-black text-orange-700 dark:text-orange-400">
                         {formatRupiah(tx.total)}
                       </td>
                       <td className="py-3.5 px-4 text-center">
                         <button
                           onClick={() => handleViewReceipt(tx)}
-                          className="px-2.5 py-1 rounded-lg bg-sky-50 text-sky-700 dark:bg-sky-950/60 dark:text-sky-300 hover:bg-sky-100 font-bold inline-flex items-center gap-1 transition text-[11px]"
+                          className="px-2.5 py-1 rounded-lg bg-orange-50 text-orange-700 dark:bg-orange-950/60 dark:text-orange-300 hover:bg-orange-100 font-bold inline-flex items-center gap-1 transition text-[11px]"
                         >
                           <Eye className="w-3.5 h-3.5" />
                           <span>Struk</span>

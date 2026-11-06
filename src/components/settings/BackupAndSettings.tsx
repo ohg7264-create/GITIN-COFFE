@@ -110,7 +110,7 @@ export const BackupAndSettings: React.FC = () => {
       {/* Header */}
       <div>
         <h1 className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight flex items-center gap-2.5">
-          <Database className="w-7 h-7 text-sky-600" />
+          <Database className="w-7 h-7 text-orange-600" />
           <span>Backup Data & Pengaturan Toko</span>
         </h1>
         <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
@@ -122,12 +122,12 @@ export const BackupAndSettings: React.FC = () => {
         <div
           className={`p-4 rounded-xl flex items-center gap-2.5 text-xs font-bold ${
             notification.type === 'success'
-              ? 'bg-sky-50 text-sky-800 dark:bg-sky-950/80 dark:text-sky-200 border border-sky-200 dark:border-sky-800'
+              ? 'bg-orange-50 text-orange-800 dark:bg-orange-950/80 dark:text-orange-200 border border-orange-200 dark:border-orange-800'
               : 'bg-rose-50 text-rose-800 dark:bg-rose-950/80 dark:text-rose-200 border border-rose-200 dark:border-rose-800'
           }`}
         >
           {notification.type === 'success' ? (
-            <CheckCircle2 className="w-4 h-4 text-sky-600" />
+            <CheckCircle2 className="w-4 h-4 text-orange-600" />
           ) : (
             <AlertCircle className="w-4 h-4 text-rose-600" />
           )}
@@ -140,7 +140,7 @@ export const BackupAndSettings: React.FC = () => {
         {/* Backup Database Section */}
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs space-y-4">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-sky-50 dark:bg-sky-950/60 flex items-center justify-center text-sky-600">
+            <div className="w-9 h-9 rounded-xl bg-orange-50 dark:bg-orange-950/60 flex items-center justify-center text-orange-600">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
@@ -171,7 +171,7 @@ export const BackupAndSettings: React.FC = () => {
           <div className="space-y-2.5 pt-1">
             <button
               onClick={exportBackupJSON}
-              className="w-full py-2.5 px-4 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-xs transition"
+              className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-xs transition"
             >
               <Download className="w-4 h-4" />
               <span>Unduh File Backup Database (.JSON)</span>
@@ -233,7 +233,7 @@ export const BackupAndSettings: React.FC = () => {
               <button
                 onClick={toggleDarkMode}
                 className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors ${
-                  isDarkMode ? 'bg-sky-600' : 'bg-slate-300'
+                  isDarkMode ? 'bg-orange-500' : 'bg-slate-300'
                 }`}
               >
                 <div
@@ -259,7 +259,7 @@ export const BackupAndSettings: React.FC = () => {
       {/* Profil Toko & Pengaturan Struk Form */}
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs">
         <div className="flex items-center gap-2.5 mb-5 pb-4 border-b border-slate-100 dark:border-slate-800">
-          <div className="w-9 h-9 rounded-xl bg-sky-50 dark:bg-sky-950/60 flex items-center justify-center text-sky-600">
+          <div className="w-9 h-9 rounded-xl bg-orange-50 dark:bg-orange-950/60 flex items-center justify-center text-orange-600">
             <Store className="w-5 h-5" />
           </div>
           <div>
@@ -362,7 +362,7 @@ export const BackupAndSettings: React.FC = () => {
                     type="checkbox"
                     checked={enableTax}
                     onChange={e => setEnableTax(e.target.checked)}
-                    className="rounded text-sky-600"
+                    className="rounded text-orange-600 focus:ring-orange-500"
                   />
                   <span>Aktifkan Pajak pada Transaksi</span>
                 </label>
@@ -385,7 +385,7 @@ export const BackupAndSettings: React.FC = () => {
           <div className="pt-2 flex justify-end">
             <button
               type="submit"
-              className="px-6 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs shadow-xs transition"
+              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-xs shadow-xs transition"
             >
               Simpan Semua Perubahan
             </button>

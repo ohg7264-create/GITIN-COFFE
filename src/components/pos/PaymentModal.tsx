@@ -106,13 +106,13 @@ export const PaymentModal: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="bg-white dark:bg-slate-900 w-full max-w-xl rounded-2xl shadow-2xl border border-sky-100 dark:border-slate-800 overflow-hidden flex flex-col max-h-[90vh]">
+      <div className="bg-white dark:bg-slate-900 w-full max-w-xl rounded-2xl shadow-2xl border border-orange-100 dark:border-slate-800 overflow-hidden flex flex-col max-h-[90vh]">
         {/* Modal Header */}
-        <div className="p-4 sm:p-5 border-b border-sky-100 dark:border-slate-800 flex items-center justify-between bg-gradient-to-r from-sky-50/40 to-white dark:from-slate-900 dark:to-slate-900">
+        <div className="p-4 sm:p-5 border-b border-orange-100 dark:border-slate-800 flex items-center justify-between bg-gradient-to-r from-orange-50/40 to-white dark:from-slate-900 dark:to-slate-900">
           <div>
             <h3 className="font-extrabold text-lg text-slate-900 dark:text-white flex items-center gap-2">
               <span>Pembayaran Pesanan</span>
-              <span className="text-xs px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300 font-bold border border-sky-200 dark:border-sky-800">
+              <span className="text-xs px-2.5 py-0.5 rounded-full bg-orange-100 text-orange-700 dark:bg-orange-950 dark:text-orange-300 font-bold border border-orange-200 dark:border-orange-800">
                 {cartTotals.itemCount} Item
               </span>
             </h3>
@@ -130,27 +130,27 @@ export const PaymentModal: React.FC = () => {
         </div>
 
         {/* Total Banner */}
-        <div className="px-5 py-4 bg-gradient-to-r from-sky-50 to-blue-50/40 dark:from-sky-950/40 dark:to-slate-900 border-b border-sky-100 dark:border-slate-800 flex items-center justify-between">
+        <div className="px-5 py-4 bg-gradient-to-r from-amber-50 to-orange-50/50 dark:from-orange-950/40 dark:to-slate-900 border-b border-orange-100 dark:border-slate-800 flex items-center justify-between">
           <div>
-            <span className="text-xs font-semibold text-sky-800 dark:text-sky-300 uppercase tracking-wide">
+            <span className="text-xs font-semibold text-orange-800 dark:text-orange-300 uppercase tracking-wide">
               Total Tagihan
             </span>
             <p className="text-[11px] text-slate-500 dark:text-slate-400">Sudah termasuk pajak & diskon</p>
           </div>
-          <span className="text-2xl sm:text-3xl font-black text-sky-600 dark:text-sky-400 tracking-tight">
+          <span className="text-2xl sm:text-3xl font-black text-orange-600 dark:text-orange-400 tracking-tight">
             {formatRupiah(grandTotal)}
           </span>
         </div>
 
         {/* Method Selector Tabs */}
-        <div className="px-5 pt-3.5 grid grid-cols-4 gap-2 border-b border-sky-100 dark:border-slate-800 pb-3.5 bg-slate-50/50 dark:bg-slate-900">
+        <div className="px-5 pt-3.5 grid grid-cols-4 gap-2 border-b border-orange-100 dark:border-slate-800 pb-3.5 bg-slate-50/50 dark:bg-slate-900">
           <button
             type="button"
             onClick={() => setActivePaymentMethod('cash')}
             className={`py-2 px-1 rounded-xl text-xs font-bold flex flex-col items-center gap-1.5 transition ${
               activePaymentMethod === 'cash'
-                ? 'bg-sky-500 text-white shadow-md shadow-sky-500/25 ring-2 ring-sky-500/20'
-                : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 hover:bg-sky-50/60'
+                ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-md shadow-orange-500/25 ring-2 ring-orange-500/20'
+                : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 hover:bg-orange-50/60'
             }`}
           >
             <Banknote className="w-4 h-4" />
@@ -162,8 +162,8 @@ export const PaymentModal: React.FC = () => {
             onClick={() => setActivePaymentMethod('qris')}
             className={`py-2 px-1 rounded-xl text-xs font-bold flex flex-col items-center gap-1.5 transition ${
               activePaymentMethod === 'qris'
-                ? 'bg-sky-500 text-white shadow-md shadow-sky-500/25 ring-2 ring-sky-500/20'
-                : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 hover:bg-sky-50/60'
+                ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-md shadow-orange-500/25 ring-2 ring-orange-500/20'
+                : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 hover:bg-orange-50/60'
             }`}
           >
             <QrCode className="w-4 h-4" />
@@ -175,8 +175,8 @@ export const PaymentModal: React.FC = () => {
             onClick={() => setActivePaymentMethod('card')}
             className={`py-2 px-1 rounded-xl text-xs font-bold flex flex-col items-center gap-1.5 transition ${
               activePaymentMethod === 'card'
-                ? 'bg-sky-500 text-white shadow-md shadow-sky-500/25 ring-2 ring-sky-500/20'
-                : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 hover:bg-sky-50/60'
+                ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-md shadow-orange-500/25 ring-2 ring-orange-500/20'
+                : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 hover:bg-orange-50/60'
             }`}
           >
             <CreditCard className="w-4 h-4" />
@@ -188,8 +188,8 @@ export const PaymentModal: React.FC = () => {
             onClick={() => setActivePaymentMethod('gopay')}
             className={`py-2 px-1 rounded-xl text-xs font-bold flex flex-col items-center gap-1.5 transition ${
               activePaymentMethod === 'gopay' || activePaymentMethod === 'ovo' || activePaymentMethod === 'dana'
-                ? 'bg-sky-500 text-white shadow-md shadow-sky-500/25 ring-2 ring-sky-500/20'
-                : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 hover:bg-sky-50/60'
+                ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-md shadow-orange-500/25 ring-2 ring-orange-500/20'
+                : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 hover:bg-orange-50/60'
             }`}
           >
             <Wallet className="w-4 h-4" />
@@ -214,7 +214,7 @@ export const PaymentModal: React.FC = () => {
                     type="text"
                     value={customCashInput ? parseInt(customCashInput, 10).toLocaleString('id-ID') : ''}
                     onChange={handleCustomCashChange}
-                    className="w-full pl-11 pr-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 font-extrabold text-xl text-slate-900 dark:text-white focus:border-sky-500 focus:outline-none bg-white dark:bg-slate-800 shadow-xs"
+                    className="w-full pl-11 pr-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 font-extrabold text-xl text-slate-900 dark:text-white focus:border-orange-500 focus:outline-none bg-white dark:bg-slate-800 shadow-xs"
                     placeholder="0"
                   />
                 </div>
@@ -233,8 +233,8 @@ export const PaymentModal: React.FC = () => {
                       onClick={() => handleCashTenderClick(opt.value)}
                       className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition ${
                         cashTendered === opt.value
-                          ? 'bg-sky-600 text-white border-sky-600 shadow-xs'
-                          : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-sky-400 hover:text-sky-600'
+                          ? 'bg-orange-600 text-white border-orange-600 shadow-xs'
+                          : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-orange-400 hover:text-orange-600'
                       }`}
                     >
                       {opt.label}
@@ -247,7 +247,7 @@ export const PaymentModal: React.FC = () => {
               <div
                 className={`p-4 rounded-xl border ${
                   isCashSufficient
-                    ? 'bg-sky-50 dark:bg-sky-950/40 border-sky-200 dark:border-sky-800 text-sky-900 dark:text-sky-200'
+                    ? 'bg-orange-50 dark:bg-orange-950/40 border-orange-200 dark:border-orange-800 text-orange-950 dark:text-orange-200'
                     : 'bg-rose-50 dark:bg-rose-950/40 border-rose-200 dark:border-rose-800 text-rose-900 dark:text-rose-200'
                 }`}
               >
@@ -268,7 +268,7 @@ export const PaymentModal: React.FC = () => {
           {/* TAB 2: QRIS */}
           {activePaymentMethod === 'qris' && (
             <div className="flex flex-col items-center text-center space-y-4">
-              <div className="bg-white p-4 rounded-2xl border-2 border-sky-100 shadow-lg shadow-sky-500/10">
+              <div className="bg-white p-4 rounded-2xl border-2 border-orange-100 shadow-lg shadow-orange-500/10">
                 {/* Visual QR Code Generator */}
                 <div className="w-48 h-48 bg-slate-900 p-2 rounded-xl flex flex-col items-center justify-center relative overflow-hidden">
                   <div className="w-full h-full bg-white p-2 rounded-lg flex flex-col items-center justify-center">
@@ -279,7 +279,7 @@ export const PaymentModal: React.FC = () => {
                     />
                   </div>
                 </div>
-                <div className="mt-2 text-[11px] font-bold tracking-wider text-sky-700 uppercase">
+                <div className="mt-2 text-[11px] font-bold tracking-wider text-orange-700 uppercase">
                   NMID: ID1020261028001 • GITIN COFFE
                 </div>
               </div>
@@ -298,7 +298,7 @@ export const PaymentModal: React.FC = () => {
                 type="button"
                 onClick={() => handleCompleteTransaction('qris', `QRIS-${Date.now().toString().slice(-6)}`)}
                 disabled={isProcessing}
-                className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition"
+                className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition"
               >
                 <CheckCircle2 className="w-4 h-4" />
                 <span>Simulasikan Pembayaran QRIS Pelanggan Berhasil</span>
@@ -321,8 +321,8 @@ export const PaymentModal: React.FC = () => {
                       onClick={() => setCardBank(bank)}
                       className={`py-2 rounded-xl text-xs font-bold border transition ${
                         cardBank === bank
-                          ? 'bg-sky-500 text-white border-sky-500 shadow-xs'
-                          : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-sky-300'
+                          ? 'bg-orange-500 text-white border-orange-500 shadow-xs'
+                          : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-orange-300'
                       }`}
                     >
                       {bank}
@@ -341,12 +341,12 @@ export const PaymentModal: React.FC = () => {
                   value={cardNumber}
                   onChange={e => setCardNumber(e.target.value)}
                   placeholder="Contoh: 4321 atau APPROV-901"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white bg-white dark:bg-slate-800 focus:outline-none focus:border-sky-500"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white bg-white dark:bg-slate-800 focus:outline-none focus:border-orange-500"
                 />
               </div>
 
-              <div className="p-3 bg-sky-50/70 dark:bg-sky-950/30 rounded-xl flex items-center gap-2.5 text-xs text-sky-800 dark:text-sky-300 border border-sky-100 dark:border-sky-900/40">
-                <ShieldCheck className="w-5 h-5 text-sky-600 flex-shrink-0" />
+              <div className="p-3 bg-orange-50/70 dark:bg-orange-950/30 rounded-xl flex items-center gap-2.5 text-xs text-orange-900 dark:text-orange-200 border border-orange-100 dark:border-orange-900/40">
+                <ShieldCheck className="w-5 h-5 text-orange-600 flex-shrink-0" />
                 <span>Gesek atau tap kartu pelanggan pada mesin EDC kemudian masukkan nomor referensi.</span>
               </div>
             </div>
@@ -363,9 +363,9 @@ export const PaymentModal: React.FC = () => {
                 </label>
                 <div className="grid grid-cols-3 gap-2">
                   {[
-                    { id: 'gopay', label: 'GoPay', color: 'bg-sky-600' },
-                    { id: 'ovo', label: 'OVO', color: 'bg-purple-600' },
-                    { id: 'dana', label: 'DANA', color: 'bg-blue-600' },
+                    { id: 'gopay', label: 'GoPay' },
+                    { id: 'ovo', label: 'OVO' },
+                    { id: 'dana', label: 'DANA' },
                   ].map(ew => (
                     <button
                       key={ew.id}
@@ -376,7 +376,7 @@ export const PaymentModal: React.FC = () => {
                       }}
                       className={`py-2 px-3 rounded-xl text-xs font-bold border transition ${
                         eWalletProvider === ew.id
-                          ? 'bg-sky-500 text-white border-sky-500 shadow-xs'
+                          ? 'bg-orange-500 text-white border-orange-500 shadow-xs'
                           : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
                       }`}
                     >
@@ -397,7 +397,7 @@ export const PaymentModal: React.FC = () => {
                     value={eWalletNumber}
                     onChange={e => setEWalletNumber(e.target.value)}
                     placeholder="08xxxxxxxxxx"
-                    className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white bg-white dark:bg-slate-800 focus:outline-none focus:border-sky-500"
+                    className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-900 dark:text-white bg-white dark:bg-slate-800 focus:outline-none focus:border-orange-500"
                   />
                 </div>
               </div>
@@ -414,13 +414,13 @@ export const PaymentModal: React.FC = () => {
               value={orderNotes}
               onChange={e => setOrderNotes(e.target.value)}
               placeholder="Contoh: Meja 04 / Takeaway tanpa sedotan"
-              className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-xs text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-800 focus:outline-none focus:border-sky-500"
+              className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-xs text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-800 focus:outline-none focus:border-orange-500"
             />
           </div>
         </div>
 
         {/* Modal Action Footer */}
-        <div className="p-4 sm:p-5 border-t border-sky-100 dark:border-slate-800 flex items-center justify-between gap-3 bg-slate-50/70 dark:bg-slate-900">
+        <div className="p-4 sm:p-5 border-t border-orange-100 dark:border-slate-800 flex items-center justify-between gap-3 bg-slate-50/70 dark:bg-slate-900">
           <button
             type="button"
             onClick={() => setIsPaymentModalOpen(false)}
@@ -450,7 +450,7 @@ export const PaymentModal: React.FC = () => {
                 handleCompleteTransaction('qris');
               }
             }}
-            className="flex-1 py-3 px-5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 disabled:opacity-40 disabled:pointer-events-none text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-sky-500/25 transition active:scale-98"
+            className="flex-1 py-3 px-5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 disabled:opacity-40 disabled:pointer-events-none text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-orange-500/25 transition active:scale-98"
           >
             <span>
               {isProcessing ? 'Memproses Transaksi...' : 'Konfirmasi & Selesaikan'}

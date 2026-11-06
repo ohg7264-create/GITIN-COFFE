@@ -81,7 +81,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className="flex-1 min-w-0 pr-2">
           <h3 className="font-black text-lg sm:text-xl md:text-2xl text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
             {product.code ? (
-              <span className="text-sky-600 dark:text-sky-400 font-black flex-shrink-0">
+              <span className="text-orange-600 dark:text-orange-400 font-black flex-shrink-0">
                 {product.code}.
               </span>
             ) : null}
@@ -105,7 +105,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               <AlertCircle className="w-4 h-4" /> Stok Habis
             </span>
           )}
-          <span className="text-base sm:text-lg md:text-xl font-black text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-sky-950/60 px-3.5 py-1.5 rounded-2xl border border-sky-100 dark:border-sky-800 shadow-xs">
+          <span className="text-base sm:text-lg md:text-xl font-black text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-950/60 px-3.5 py-1.5 rounded-2xl border border-orange-200 dark:border-orange-800 shadow-xs">
             {formatRupiah(unitPrice)}
           </span>
         </div>
@@ -152,7 +152,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                   type="button"
                   onClick={() => setAmount(prev => Math.min(product.stock, prev + 1))}
                   disabled={isOutOfStock || amount >= product.stock}
-                  className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg bg-gradient-to-tr from-sky-500 to-blue-600 text-white flex items-center justify-center hover:from-sky-600 hover:to-blue-700 active:scale-95 disabled:opacity-40 disabled:pointer-events-none shadow-md shadow-sky-500/25 transition"
+                  className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg bg-gradient-to-tr from-amber-500 to-orange-600 text-white flex items-center justify-center hover:from-amber-600 hover:to-orange-700 active:scale-95 disabled:opacity-40 disabled:pointer-events-none shadow-md shadow-orange-500/25 transition"
                   aria-label="Tambah jumlah"
                 >
                   <Plus className="w-4 h-4 md:w-5 md:h-5 stroke-[2.5]" />
@@ -176,8 +176,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         onClick={() => setSelectedSugar(level)}
                         className={`px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm md:text-base font-bold rounded-xl border-2 transition-all active:scale-95 ${
                           isSelected
-                            ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white border-transparent shadow-md shadow-sky-500/25'
-                            : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:border-sky-300 hover:text-sky-600'
+                            ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white border-transparent shadow-md shadow-orange-500/25'
+                            : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:border-orange-300 hover:text-orange-600'
                         }`}
                       >
                         {level}
@@ -209,8 +209,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                       onClick={() => setSelectedSize(size)}
                       className={`min-w-9 sm:min-w-10 md:min-w-11 h-9 sm:h-10 md:h-11 px-3 text-xs sm:text-sm md:text-base font-black rounded-xl border-2 transition-all active:scale-95 ${
                         isSelected
-                          ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white border-transparent shadow-md shadow-sky-500/25'
-                          : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:border-sky-300 hover:text-sky-600'
+                          ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white border-transparent shadow-md shadow-orange-500/25'
+                          : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:border-orange-300 hover:text-orange-600'
                       }`}
                       title={priceDiff > 0 ? `+${formatRupiah(priceDiff)}` : 'Standar'}
                     >
@@ -237,8 +237,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         onClick={() => setSelectedIce(level)}
                         className={`px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm md:text-base font-bold rounded-xl border-2 transition-all active:scale-95 ${
                           isSelected
-                            ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white border-transparent shadow-md shadow-sky-500/25'
-                            : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:border-sky-300 hover:text-sky-600'
+                            ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white border-transparent shadow-md shadow-orange-500/25'
+                            : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:border-orange-300 hover:text-orange-600'
                         }`}
                       >
                         {level}
@@ -280,7 +280,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                       }}
                     />
                     {selected && (
-                      <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-sky-500 text-white flex items-center justify-center ring-2 ring-white dark:ring-slate-900 shadow-md">
+                      <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-orange-500 text-white flex items-center justify-center ring-2 ring-white dark:ring-slate-900 shadow-md">
                         <Check className="w-3.5 h-3.5 stroke-[3.5]" />
                       </div>
                     )}
@@ -288,7 +288,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                   <span
                     className={`text-xs sm:text-sm text-center max-w-[80px] sm:max-w-[90px] truncate font-bold leading-tight ${
                       selected
-                        ? 'text-sky-600 dark:text-sky-400'
+                        ? 'text-orange-600 dark:text-orange-400'
                         : 'text-slate-700 dark:text-slate-300'
                     }`}
                   >
@@ -318,10 +318,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           disabled={isOutOfStock}
           className={`px-6 sm:px-8 py-3 sm:py-3.5 md:py-4 rounded-2xl font-black text-sm sm:text-base md:text-lg flex items-center justify-center gap-2.5 transition-all ${
             isAddedFeedback
-              ? 'bg-sky-600 text-white scale-95 shadow-lg shadow-sky-600/30'
+              ? 'bg-orange-600 text-white scale-95 shadow-lg shadow-orange-600/30'
               : isOutOfStock
               ? 'bg-slate-200 dark:bg-slate-800 text-slate-400 cursor-not-allowed'
-              : 'bg-gradient-to-r from-sky-500 via-sky-600 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white shadow-lg shadow-sky-500/30 active:scale-95'
+              : 'bg-gradient-to-r from-amber-500 via-orange-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/30 active:scale-95'
           }`}
         >
           {isAddedFeedback ? (

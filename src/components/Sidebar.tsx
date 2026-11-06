@@ -95,10 +95,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileDrawer = false, onClos
         isMobileDrawer
           ? 'w-full h-full flex flex-col'
           : 'hidden lg:flex w-64 flex-shrink-0 h-screen sticky top-0 flex-col'
-      } bg-white/70 dark:bg-slate-900/75 backdrop-blur-md border-r border-sky-200/50 dark:border-slate-800/80 overflow-y-auto select-none print:hidden transition-colors shadow-xs`}
+      } bg-white/70 dark:bg-slate-900/75 backdrop-blur-md border-r border-orange-200/50 dark:border-slate-800/80 overflow-y-auto select-none print:hidden transition-colors shadow-xs`}
     >
-      {/* Top Logo - Modern Coffee icon with light blue gradient */}
-      <div className="p-4 sm:p-5 flex items-center justify-between border-b border-sky-100/60 dark:border-slate-800/60">
+      {/* Top Logo - Modern Coffee icon with orange gradient */}
+      <div className="p-4 sm:p-5 flex items-center justify-between border-b border-orange-100/60 dark:border-slate-800/60">
         <button
           onClick={() => {
             setActiveView('pos');
@@ -107,12 +107,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileDrawer = false, onClos
           }}
           className="flex items-center gap-3 text-left group focus:outline-none"
         >
-          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-sky-500 via-sky-600 to-cyan-400 flex items-center justify-center shadow-md shadow-sky-500/25 group-hover:scale-105 transition-transform flex-shrink-0 text-white">
+          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-amber-500 via-orange-500 to-orange-600 flex items-center justify-center shadow-md shadow-orange-500/25 group-hover:scale-105 transition-transform flex-shrink-0 text-white">
             <Coffee className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
           </div>
           <div>
             <span className="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
-              Gitin<span className="text-sky-500 font-black">Coffe</span>
+              Gitin<span className="text-orange-500 font-black">Coffe</span>
             </span>
             <p className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Kasir & Stok Pintar</p>
           </div>
@@ -142,7 +142,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileDrawer = false, onClos
       </div>
 
       {/* Main System Nav Links */}
-      <div className="px-3 pt-3 pb-2 border-b border-sky-100/80 dark:border-slate-800 space-y-0.5">
+      <div className="px-3 pt-3 pb-2 border-b border-orange-100/80 dark:border-slate-800 space-y-0.5">
         <p className="px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
           Menu Utama
         </p>
@@ -154,8 +154,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileDrawer = false, onClos
               onClick={() => handleNavClick(item.id)}
               className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                 isActive
-                  ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-md shadow-sky-500/25'
-                  : 'text-slate-600 dark:text-slate-300 hover:bg-sky-50/70 dark:hover:bg-slate-800 hover:text-sky-700 dark:hover:text-white'
+                  ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-md shadow-orange-500/25'
+                  : 'text-slate-600 dark:text-slate-300 hover:bg-orange-50/70 dark:hover:bg-slate-800 hover:text-orange-700 dark:hover:text-white'
               }`}
             >
               <div className="flex items-center gap-2.5">
@@ -180,7 +180,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileDrawer = false, onClos
             <h3 className="text-sm font-bold tracking-tight text-slate-800 dark:text-slate-200">Drink</h3>
             <button
               onClick={() => handleCategoryClick('all')}
-              className="text-[11px] text-sky-600 hover:text-sky-700 font-semibold"
+              className="text-[11px] text-orange-600 hover:text-orange-700 font-semibold"
             >
               Semua
             </button>
@@ -194,7 +194,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileDrawer = false, onClos
                   onClick={() => handleCategoryClick(cat.id)}
                   className={`relative w-full h-14 sm:h-15 rounded-xl overflow-hidden group text-left transition-all ${
                     isSelected
-                      ? 'ring-2 ring-sky-500 ring-offset-2 dark:ring-offset-slate-900 scale-[1.02] shadow-sm'
+                      ? 'ring-2 ring-orange-500 ring-offset-2 dark:ring-offset-slate-900 scale-[1.02] shadow-sm'
                       : 'hover:opacity-95'
                   }`}
                 >
@@ -230,7 +230,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileDrawer = false, onClos
                   onClick={() => handleCategoryClick(cat.id)}
                   className={`relative w-full h-14 sm:h-15 rounded-xl overflow-hidden group text-left transition-all ${
                     isSelected
-                      ? 'ring-2 ring-sky-500 ring-offset-2 dark:ring-offset-slate-900 scale-[1.02] shadow-sm'
+                      ? 'ring-2 ring-orange-500 ring-offset-2 dark:ring-offset-slate-900 scale-[1.02] shadow-sm'
                       : 'hover:opacity-95'
                   }`}
                 >
@@ -262,7 +262,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileDrawer = false, onClos
               <span className="font-bold">{lowStockItems.length} Produk</span> stok menipis!
               <button
                 onClick={() => handleNavClick('stock')}
-                className="block mt-1 text-sky-600 dark:text-sky-400 font-bold hover:underline"
+                className="block mt-1 text-orange-600 dark:text-orange-400 font-bold hover:underline"
               >
                 Cek Stok Sekarang &rarr;
               </button>

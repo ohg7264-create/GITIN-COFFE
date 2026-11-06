@@ -55,7 +55,7 @@ export const AnalyticsDashboard: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div>
           <h1 className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight flex items-center gap-2.5">
-            <LayoutDashboard className="w-7 h-7 text-sky-600" />
+            <LayoutDashboard className="w-7 h-7 text-orange-600" />
             <span>Dasbor Analitik Real-Time</span>
           </h1>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
@@ -63,8 +63,8 @@ export const AnalyticsDashboard: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full bg-sky-50 text-sky-700 dark:bg-sky-950 dark:text-sky-300 self-start">
-          <span className="w-2 h-2 rounded-full bg-sky-500 animate-ping" />
+        <div className="flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full bg-orange-50 text-orange-700 dark:bg-orange-950 dark:text-orange-300 self-start">
+          <span className="w-2 h-2 rounded-full bg-orange-500 animate-ping" />
           <span>Live Synchronized</span>
         </div>
       </div>
@@ -74,14 +74,14 @@ export const AnalyticsDashboard: React.FC = () => {
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-xs">
           <div className="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
             <span>Pendapatan Hari Ini</span>
-            <div className="w-8 h-8 rounded-xl bg-sky-50 dark:bg-sky-950 flex items-center justify-center text-sky-600">
+            <div className="w-8 h-8 rounded-xl bg-orange-50 dark:bg-orange-950 flex items-center justify-center text-orange-600">
               <TrendingUp className="w-4 h-4" />
             </div>
           </div>
-          <div className="mt-2 text-2xl font-black text-sky-700 dark:text-sky-400">
+          <div className="mt-2 text-2xl font-black text-orange-700 dark:text-orange-400">
             {formatRupiah(summary.totalGrossSales)}
           </div>
-          <div className="text-[11px] text-sky-600 flex items-center gap-1 mt-1 font-semibold">
+          <div className="text-[11px] text-orange-600 flex items-center gap-1 mt-1 font-semibold">
             <ArrowUp className="w-3 h-3" /> Real-time active
           </div>
         </div>
@@ -143,7 +143,7 @@ export const AnalyticsDashboard: React.FC = () => {
               Pantau jam sibuk kafe untuk mengatur jadwal pergantian shift barista
             </p>
           </div>
-          <span className="text-xs font-bold text-sky-600 bg-sky-50 dark:bg-sky-950 px-2.5 py-1 rounded-lg">
+          <span className="text-xs font-bold text-orange-600 bg-orange-50 dark:bg-orange-950 px-2.5 py-1 rounded-lg">
             24 Jam Aktif
           </span>
         </div>
@@ -167,9 +167,9 @@ export const AnalyticsDashboard: React.FC = () => {
                       style={{ height: `${heightPct}%` }}
                       className={`w-full max-w-[28px] rounded-t-lg transition-all duration-300 ${
                         isPeak
-                          ? 'bg-sky-600 group-hover:bg-sky-500 shadow-md shadow-sky-600/30'
+                          ? 'bg-orange-600 group-hover:bg-orange-500 shadow-md shadow-orange-600/30'
                           : entry.total > 0
-                          ? 'bg-sky-300 dark:bg-sky-800 group-hover:bg-sky-400'
+                          ? 'bg-amber-400 dark:bg-amber-700 group-hover:bg-amber-500'
                           : 'bg-slate-100 dark:bg-slate-800'
                       }`}
                     />
@@ -198,11 +198,11 @@ export const AnalyticsDashboard: React.FC = () => {
             <div>
               <div className="flex justify-between text-xs font-bold mb-1.5">
                 <span className="text-slate-700 dark:text-slate-300">Minuman (Coffee, Tea & Juice)</span>
-                <span className="text-sky-600 font-extrabold">{drinkPercent}% ({formatRupiah(drinkSales)})</span>
+                <span className="text-orange-600 font-extrabold">{drinkPercent}% ({formatRupiah(drinkSales)})</span>
               </div>
               <div className="w-full h-3 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
                 <div
-                  className="h-full bg-sky-600 rounded-full transition-all duration-700"
+                  className="h-full bg-orange-500 rounded-full transition-all duration-700"
                   style={{ width: `${drinkPercent}%` }}
                 />
               </div>
@@ -261,7 +261,7 @@ export const AnalyticsDashboard: React.FC = () => {
                   </div>
                 </div>
 
-                <span className="text-xs font-black text-sky-600 bg-sky-50 dark:bg-sky-950 px-2 py-1 rounded-md">
+                <span className="text-xs font-black text-orange-600 bg-orange-50 dark:bg-orange-950 px-2 py-1 rounded-md">
                   {p.quantity} porsi
                 </span>
               </div>

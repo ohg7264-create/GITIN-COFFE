@@ -174,18 +174,18 @@ export const ReceiptModal: React.FC = () => {
       />
 
       <div className="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-4 bg-slate-900/70 backdrop-blur-xs animate-in fade-in duration-200 print:p-0 print:bg-white print:fixed print:inset-0">
-        <div className="bg-white dark:bg-slate-900 w-full max-w-lg rounded-2xl shadow-2xl border border-sky-100 dark:border-slate-800 overflow-hidden flex flex-col max-h-[92vh] print:border-none print:shadow-none print:max-w-none print:h-auto">
+        <div className="bg-white dark:bg-slate-900 w-full max-w-lg rounded-2xl shadow-2xl border border-orange-100 dark:border-slate-800 overflow-hidden flex flex-col max-h-[92vh] print:border-none print:shadow-none print:max-w-none print:h-auto">
           {/* Modal Toolbar (hidden on print) */}
-          <div className="p-3 sm:p-4 border-b border-sky-100 dark:border-slate-800 bg-gradient-to-r from-sky-50/60 to-white dark:from-slate-900 dark:to-slate-800/50 flex items-center justify-between print:hidden">
+          <div className="p-3 sm:p-4 border-b border-orange-100 dark:border-slate-800 bg-gradient-to-r from-orange-50/60 to-white dark:from-slate-900 dark:to-slate-800/50 flex items-center justify-between print:hidden">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-xl bg-sky-500 text-white flex items-center justify-center shadow-xs">
+              <div className="w-8 h-8 rounded-xl bg-orange-500 text-white flex items-center justify-center shadow-xs">
                 <CheckCircle2 className="w-5 h-5 text-white" />
               </div>
               <div>
                 <h3 className="font-extrabold text-sm text-slate-900 dark:text-white flex items-center gap-1.5">
                   Transaksi Berhasil
                 </h3>
-                <span className="text-[10px] text-sky-600 dark:text-sky-400 font-semibold">
+                <span className="text-[10px] text-orange-600 dark:text-orange-400 font-semibold">
                   Gitin Coffe POS
                 </span>
               </div>
@@ -197,8 +197,8 @@ export const ReceiptModal: React.FC = () => {
                 onClick={handlePlaySound}
                 className={`p-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1 transition ${
                   isPlayingSound
-                    ? 'bg-sky-500 text-white border-sky-500'
-                    : 'bg-white dark:bg-slate-800 border-sky-200 dark:border-slate-700 text-sky-600 dark:text-sky-400 hover:bg-sky-50'
+                    ? 'bg-orange-500 text-white border-orange-500'
+                    : 'bg-white dark:bg-slate-800 border-orange-200 dark:border-slate-700 text-orange-600 dark:text-orange-400 hover:bg-orange-50'
                 }`}
                 title="Putar suara efek pembayaran"
               >
@@ -212,7 +212,7 @@ export const ReceiptModal: React.FC = () => {
                   onClick={() => setPaperWidth('58mm')}
                   className={`px-2 py-0.5 rounded-md transition ${
                     paperWidth === '58mm'
-                      ? 'bg-white dark:bg-slate-700 text-sky-600 dark:text-sky-300 shadow-xs'
+                      ? 'bg-white dark:bg-slate-700 text-orange-600 dark:text-orange-300 shadow-xs'
                       : 'text-slate-500'
                   }`}
                 >
@@ -222,7 +222,7 @@ export const ReceiptModal: React.FC = () => {
                   onClick={() => setPaperWidth('80mm')}
                   className={`px-2 py-0.5 rounded-md transition ${
                     paperWidth === '80mm'
-                      ? 'bg-white dark:bg-slate-700 text-sky-600 dark:text-sky-300 shadow-xs'
+                      ? 'bg-white dark:bg-slate-700 text-orange-600 dark:text-orange-300 shadow-xs'
                       : 'text-slate-500'
                   }`}
                 >
@@ -326,7 +326,7 @@ export const ReceiptModal: React.FC = () => {
                   </div>
                 )}
                 {tx.discount > 0 && (
-                  <div className="flex justify-between text-sky-600">
+                  <div className="flex justify-between text-orange-600">
                     <span>Diskon</span>
                     <span>-{formatRupiah(tx.discount)}</span>
                   </div>
@@ -394,19 +394,19 @@ export const ReceiptModal: React.FC = () => {
           </div>
 
           {/* Action Buttons Footer (hidden on print) */}
-          <div className="p-3 sm:p-4 border-t border-sky-100 dark:border-slate-800 bg-white dark:bg-slate-900 space-y-2 print:hidden">
+          <div className="p-3 sm:p-4 border-t border-orange-100 dark:border-slate-800 bg-white dark:bg-slate-900 space-y-2 print:hidden">
             {/* Top action row: Download PDF & Download JPG buttons */}
             <div className="grid grid-cols-2 gap-2">
               <button
                 type="button"
                 onClick={handleDownloadPdf}
                 disabled={isExportingPdf}
-                className="py-2 px-3 rounded-xl border border-sky-300 dark:border-sky-800 bg-sky-50 dark:bg-sky-950/50 hover:bg-sky-100 dark:hover:bg-sky-900/60 text-sky-700 dark:text-sky-300 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-98 disabled:opacity-50"
+                className="py-2 px-3 rounded-xl border border-orange-300 dark:border-orange-800 bg-orange-50 dark:bg-orange-950/50 hover:bg-orange-100 dark:hover:bg-orange-900/60 text-orange-700 dark:text-orange-300 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-98 disabled:opacity-50"
               >
                 {isExportingPdf ? (
-                  <Loader2 className="w-4 h-4 animate-spin text-sky-600" />
+                  <Loader2 className="w-4 h-4 animate-spin text-orange-600" />
                 ) : (
-                  <FileDown className="w-4 h-4 text-sky-600 dark:text-sky-400" />
+                  <FileDown className="w-4 h-4 text-orange-600 dark:text-orange-400" />
                 )}
                 <span>Download PDF</span>
               </button>
@@ -415,12 +415,12 @@ export const ReceiptModal: React.FC = () => {
                 type="button"
                 onClick={handleDownloadJpg}
                 disabled={isExportingJpg}
-                className="py-2 px-3 rounded-xl border border-blue-300 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-700 dark:text-blue-300 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-98 disabled:opacity-50"
+                className="py-2 px-3 rounded-xl border border-amber-300 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/50 hover:bg-amber-100 dark:hover:bg-amber-900/60 text-amber-700 dark:text-amber-300 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-98 disabled:opacity-50"
               >
                 {isExportingJpg ? (
-                  <Loader2 className="w-4 h-4 animate-spin text-blue-600" />
+                  <Loader2 className="w-4 h-4 animate-spin text-amber-600" />
                 ) : (
-                  <ImageDown className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                  <ImageDown className="w-4 h-4 text-amber-600 dark:text-amber-400" />
                 )}
                 <span>Download JPG</span>
               </button>
@@ -434,14 +434,14 @@ export const ReceiptModal: React.FC = () => {
                 className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-semibold flex items-center gap-1.5 transition"
                 title="Salin teks struk"
               >
-                {copied ? <Check className="w-4 h-4 text-sky-600" /> : <Copy className="w-4 h-4" />}
+                {copied ? <Check className="w-4 h-4 text-orange-600" /> : <Copy className="w-4 h-4" />}
                 <span className="hidden sm:inline">{copied ? 'Tersalin' : 'Salin'}</span>
               </button>
 
               <button
                 type="button"
                 onClick={handlePrint}
-                className="flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-sky-500/25 transition active:scale-98"
+                className="flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-orange-500/25 transition active:scale-98"
               >
                 <Printer className="w-4 h-4" />
                 <span>Cetak Thermal</span>
