@@ -84,7 +84,7 @@ export interface Transaction {
   referenceNumber?: string;
 }
 
-export type UserRole = 'admin' | 'kasir';
+export type UserRole = 'admin' | 'manager' | 'kasir';
 
 export interface User {
   id: string;

@@ -565,28 +565,37 @@ export const INITIAL_USERS: User[] = [
   {
     id: 'user-01',
     name: 'Gitin Arifysa Fadilah',
-    username: 'gitin',
+    username: 'kasir',
     role: 'kasir',
     pin: '1234',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
-    email: 'gitin@gitincoffe.id',
+    email: 'kasir@gitincoffe.id',
   },
   {
     id: 'user-02',
-    name: 'Budi Santoso',
+    name: 'Gitin',
     username: 'admin',
     role: 'admin',
     pin: '8888',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
-    email: 'admin@gitincoffe.id',
+    email: 'gitin@gitincoffe.id',
+  },
+  {
+    id: 'user-03',
+    name: 'Arifysa',
+    username: 'arifysa',
+    role: 'manager',
+    pin: '5555',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
+    email: 'arifysa@gitincoffe.id',
   },
 ];
 
 export const INITIAL_SETTINGS: StoreSettings = {
   storeName: 'Gitin Coffe',
   storeTagline: 'Artisan Coffee, Food & Good Vibes',
-  address: 'Jl. Senopati Raya No. 42, Kebayoran Baru, Jakarta Selatan',
-  phone: '0812-8899-2345',
+  address: 'Jl. Penyarang, Desa Kunci, Kecamatan Sidareja, Cilacap',
+  phone: '085868707185',
   taxRate: 0.0408, // ~4.000 on 98.000 as in mockup
   enableTax: true,
   currency: 'Rp',
@@ -734,7 +743,7 @@ export const INITIAL_STOCK_LOGS: StockLog[] = [
     previousStock: 0,
     newStock: 40,
     reason: 'Restock awal harian',
-    cashierName: 'Budi Santoso',
+    cashierName: 'Gitin',
   },
   {
     id: 'log-2',

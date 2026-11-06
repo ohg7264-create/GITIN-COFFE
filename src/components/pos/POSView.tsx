@@ -38,15 +38,15 @@ export const POSView: React.FC<POSViewProps> = ({ onOpenLoginModal }) => {
   return (
     <div className="flex-1 flex flex-col h-full overflow-y-auto bg-transparent transition-colors relative z-10">
       {/* Unified Sticky Header containing Search Bar and Category Menu Bar - never scrolls away */}
-      <div className="sticky top-0 z-20 bg-white/70 dark:bg-slate-900/75 backdrop-blur-md border-b border-sky-200/60 dark:border-slate-800/80 shadow-xs">
+      <div className="sticky top-0 z-20 bg-white/75 dark:bg-slate-900/80 backdrop-blur-md border-b border-sky-200/60 dark:border-slate-800/80 shadow-xs">
         {/* Top Header matching reference image with professional light blue accents */}
-        <header className="px-4 sm:px-6 py-2.5 sm:py-3 border-b border-sky-100/50 dark:border-slate-800/60 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 sm:gap-4">
+        <header className="px-3 sm:px-6 py-2 sm:py-3 landscape:py-1.5 border-b border-sky-100/50 dark:border-slate-800/60 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
           {/* Left: "Menu List" Title */}
-          <div className="flex items-center gap-3">
-            <h1 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+          <div className="flex items-center gap-2.5">
+            <h1 className="text-lg sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight landscape:text-base">
               Menu List
             </h1>
-            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-sky-50/80 dark:bg-sky-950/80 text-sky-700 dark:text-sky-300 border border-sky-200/60 dark:border-sky-800">
+            <span className="text-[11px] sm:text-xs font-semibold px-2 sm:px-2.5 py-0.5 rounded-full bg-sky-50/80 dark:bg-sky-950/80 text-sky-700 dark:text-sky-300 border border-sky-200/60 dark:border-sky-800">
               {filteredProducts.length} Item
             </span>
           </div>
@@ -54,13 +54,13 @@ export const POSView: React.FC<POSViewProps> = ({ onOpenLoginModal }) => {
           {/* Center/Right: Search Bar */}
           <div className="flex items-center gap-3 flex-1 max-w-md">
             <div className="relative w-full">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-400 absolute left-3 sm:left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
                 placeholder="Cari menu minuman, kopi, makanan..."
-                className="w-full pl-10 pr-9 py-2 rounded-full border border-slate-200/80 dark:border-slate-700/80 bg-white/80 dark:bg-slate-800/80 text-xs sm:text-sm font-medium text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 shadow-xs transition"
+                className="w-full pl-8 sm:pl-10 pr-8 sm:pr-9 py-1.5 sm:py-2 landscape:py-1 rounded-full border border-slate-200/80 dark:border-slate-700/80 bg-white/80 dark:bg-slate-800/80 text-xs sm:text-sm font-medium text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 shadow-xs transition"
               />
               {searchQuery && (
                 <button
@@ -75,10 +75,10 @@ export const POSView: React.FC<POSViewProps> = ({ onOpenLoginModal }) => {
         </header>
 
         {/* Category Pills Bar (Transparent background, fixed/pinned when scrolling) */}
-        <div className="px-4 sm:px-6 py-2 bg-transparent flex items-center gap-2 overflow-x-auto scrollbar-none">
+        <div className="px-3 sm:px-6 py-1.5 sm:py-2 landscape:py-1 bg-transparent flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none">
           <button
             onClick={() => setSelectedCategory('all')}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all flex-shrink-0 ${
+            className={`px-3 sm:px-3.5 py-1 sm:py-1.5 landscape:py-1 rounded-full text-xs font-bold transition-all flex-shrink-0 ${
               selectedCategory === 'all'
                 ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-xs'
                 : 'bg-white/40 dark:bg-slate-800/40 backdrop-blur-xs border border-sky-200/60 dark:border-slate-700/60 text-slate-700 dark:text-slate-200 hover:bg-white/70 dark:hover:bg-slate-800/70 hover:border-sky-400'
@@ -93,7 +93,7 @@ export const POSView: React.FC<POSViewProps> = ({ onOpenLoginModal }) => {
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all flex-shrink-0 ${
+                className={`px-3 sm:px-3.5 py-1 sm:py-1.5 landscape:py-1 rounded-full text-xs font-bold transition-all flex-shrink-0 ${
                   isSelected
                     ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-xs'
                     : 'bg-white/40 dark:bg-slate-800/40 backdrop-blur-xs border border-sky-200/60 dark:border-slate-700/60 text-slate-700 dark:text-slate-200 hover:bg-white/70 dark:hover:bg-slate-800/70 hover:border-sky-400'
@@ -107,7 +107,7 @@ export const POSView: React.FC<POSViewProps> = ({ onOpenLoginModal }) => {
       </div>
 
       {/* Main Product Cards List */}
-      <main className="p-4 sm:p-6 pb-28 sm:pb-32 lg:pb-12 space-y-5 sm:space-y-6 flex-1">
+      <main className="p-3 sm:p-6 pb-24 sm:pb-32 lg:pb-12 landscape:p-3 landscape:pb-20 space-y-4 landscape:space-y-3 flex-1">
         {filteredProducts.length === 0 ? (
           <div className="bg-white dark:bg-slate-900 border border-sky-100 dark:border-slate-800 rounded-2xl p-12 text-center text-slate-400 max-w-lg mx-auto my-12 shadow-sm">
             <Search className="w-10 h-10 mx-auto mb-3 stroke-[1.5] text-sky-400" />

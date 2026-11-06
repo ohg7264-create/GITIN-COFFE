@@ -14,7 +14,7 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import { usePOS } from '../../context/POSContext';
-import { Product, Category, Topping, User, ItemType, ProductSize } from '../../types/pos';
+import { Product, Category, Topping, User, UserRole, ItemType, ProductSize } from '../../types/pos';
 import { formatRupiah } from '../../utils/pos-logic';
 
 export const MasterDataView: React.FC = () => {
@@ -80,7 +80,7 @@ export const MasterDataView: React.FC = () => {
   const [userName, setUserName] = useState('');
   const [userUsername, setUserUsername] = useState('');
   const [userPin, setUserPin] = useState('1234');
-  const [userRole, setUserRole] = useState<'admin' | 'kasir'>('kasir');
+  const [userRole, setUserRole] = useState<UserRole>('kasir');
 
   // Handlers for Product
   const handleOpenProductModal = (prod?: Product) => {
@@ -592,6 +592,8 @@ export const MasterDataView: React.FC = () => {
                         className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${
                           u.role === 'admin'
                             ? 'bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300'
+                            : u.role === 'manager'
+                            ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
                             : 'bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300'
                         }`}
                       >
@@ -978,6 +980,7 @@ export const MasterDataView: React.FC = () => {
                   className="w-full px-3 py-2 rounded-xl border text-xs bg-white dark:bg-slate-800 font-semibold"
                 >
                   <option value="kasir">Kasir (Hanya POS & Struk)</option>
+                  <option value="manager">Manager (Operasional & Laporan)</option>
                   <option value="admin">Administrator (Semua Akses & CRUD)</option>
                 </select>
               </div>

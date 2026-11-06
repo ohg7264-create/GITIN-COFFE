@@ -6,8 +6,12 @@ import {
   Copy,
   Check,
   Volume2,
-  Sparkles,
+  FileDown,
+  ImageDown,
+  Loader2,
 } from 'lucide-react';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 import { usePOS } from '../../context/POSContext';
 import { formatRupiah } from '../../utils/pos-logic';
 import { soundEffects } from '../../utils/sound';
@@ -27,6 +31,8 @@ export const ReceiptModal: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const [isPlayingSound, setIsPlayingSound] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
+  const [isExportingPdf, setIsExportingPdf] = useState(false);
+  const [isExportingJpg, setIsExportingJpg] = useState(false);
   const receiptPrintRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -58,6 +64,65 @@ export const ReceiptModal: React.FC = () => {
     soundEffects.playPaymentSuccess();
     setIsPlayingSound(true);
     setTimeout(() => setIsPlayingSound(false), 1200);
+  };
+
+  const handleDownloadPdf = async () => {
+    const element = receiptPrintRef.current;
+    if (!element || isExportingPdf) return;
+
+    try {
+      setIsExportingPdf(true);
+      const canvas = await html2canvas(element, {
+        scale: 3,
+        useCORS: true,
+        backgroundColor: '#ffffff',
+        logging: false,
+      });
+
+      const imgData = canvas.toDataURL('image/png');
+      const mmWidth = paperWidth === '80mm' ? 80 : 58;
+      const mmHeight = (canvas.height * mmWidth) / canvas.width;
+
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: [mmWidth, Math.max(mmHeight + 4, 80)],
+      });
+
+      pdf.addImage(imgData, 'PNG', 0, 2, mmWidth, mmHeight);
+      pdf.save(`Struk-${tx.invoiceNumber}.pdf`);
+    } catch (err) {
+      console.error('Gagal membuat PDF struk:', err);
+    } finally {
+      setIsExportingPdf(false);
+    }
+  };
+
+  const handleDownloadJpg = async () => {
+    const element = receiptPrintRef.current;
+    if (!element || isExportingJpg) return;
+
+    try {
+      setIsExportingJpg(true);
+      const canvas = await html2canvas(element, {
+        scale: 3,
+        useCORS: true,
+        backgroundColor: '#ffffff',
+        logging: false,
+      });
+
+      const jpgData = canvas.toDataURL('image/jpeg', 0.95);
+      const link = document.createElement('a');
+      link.download = `Struk-${tx.invoiceNumber}.jpg`;
+      link.href = jpgData;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (err) {
+      console.error('Gagal download JPG struk:', err);
+    } finally {
+      setIsExportingJpg(false);
+    }
   };
 
   const handleCopyReceiptText = () => {
@@ -108,10 +173,10 @@ export const ReceiptModal: React.FC = () => {
         paymentMethod={tx.paymentMethod}
       />
 
-      <div className="fixed inset-0 z-40 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-xs animate-in fade-in duration-200 print:p-0 print:bg-white print:fixed print:inset-0">
-        <div className="bg-white dark:bg-slate-900 w-full max-w-md rounded-2xl shadow-2xl border border-sky-100 dark:border-slate-800 overflow-hidden flex flex-col max-h-[92vh] print:border-none print:shadow-none print:max-w-none print:h-auto">
+      <div className="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-4 bg-slate-900/70 backdrop-blur-xs animate-in fade-in duration-200 print:p-0 print:bg-white print:fixed print:inset-0">
+        <div className="bg-white dark:bg-slate-900 w-full max-w-lg rounded-2xl shadow-2xl border border-sky-100 dark:border-slate-800 overflow-hidden flex flex-col max-h-[92vh] print:border-none print:shadow-none print:max-w-none print:h-auto">
           {/* Modal Toolbar (hidden on print) */}
-          <div className="p-3.5 sm:p-4 border-b border-sky-100 dark:border-slate-800 bg-gradient-to-r from-sky-50/50 to-white dark:from-slate-900 dark:to-slate-800/50 flex items-center justify-between print:hidden">
+          <div className="p-3 sm:p-4 border-b border-sky-100 dark:border-slate-800 bg-gradient-to-r from-sky-50/60 to-white dark:from-slate-900 dark:to-slate-800/50 flex items-center justify-between print:hidden">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-xl bg-sky-500 text-white flex items-center justify-center shadow-xs">
                 <CheckCircle2 className="w-5 h-5 text-white" />
@@ -126,7 +191,7 @@ export const ReceiptModal: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               {/* Play sound again button */}
               <button
                 onClick={handlePlaySound}
@@ -138,7 +203,7 @@ export const ReceiptModal: React.FC = () => {
                 title="Putar suara efek pembayaran"
               >
                 <Volume2 className={`w-3.5 h-3.5 ${isPlayingSound ? 'animate-pulse' : ''}`} />
-                <span className="hidden sm:inline text-[11px]">Suara</span>
+                <span className="hidden md:inline text-[11px]">Suara</span>
               </button>
 
               {/* Paper size toggle */}
@@ -176,7 +241,7 @@ export const ReceiptModal: React.FC = () => {
           </div>
 
           {/* Receipt Preview Body (Styled like thermal receipt paper) */}
-          <div className="flex-1 overflow-y-auto p-4 bg-slate-100/60 dark:bg-slate-950/70 flex justify-center">
+          <div className="flex-1 overflow-y-auto p-4 bg-slate-100/70 dark:bg-slate-950/70 flex justify-center">
             <div
               id="thermal-receipt"
               ref={receiptPrintRef}
@@ -195,10 +260,12 @@ export const ReceiptModal: React.FC = () => {
                   </span>
                 </div>
                 <p className="text-[10px] text-slate-500 font-sans">{storeSettings.storeTagline}</p>
-                <p className="text-[10px] text-slate-600 font-sans leading-tight mt-1">
+                <p className="text-[10px] text-slate-700 font-sans leading-relaxed mt-1 font-semibold">
                   {storeSettings.address}
                 </p>
-                <p className="text-[10px] text-slate-600 font-sans">Telp: {storeSettings.phone}</p>
+                <p className="text-[10px] text-slate-700 font-sans font-semibold">
+                  Telp: {storeSettings.phone}
+                </p>
               </div>
 
               {/* Transaction Metadata */}
@@ -327,34 +394,68 @@ export const ReceiptModal: React.FC = () => {
           </div>
 
           {/* Action Buttons Footer (hidden on print) */}
-          <div className="p-3.5 sm:p-4 border-t border-sky-100 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center gap-2 print:hidden">
-            <button
-              type="button"
-              onClick={handleCopyReceiptText}
-              className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-semibold flex items-center gap-1.5 transition"
-              title="Salin teks struk"
-            >
-              {copied ? <Check className="w-4 h-4 text-sky-600" /> : <Copy className="w-4 h-4" />}
-              <span className="hidden sm:inline">{copied ? 'Tersalin' : 'Salin'}</span>
-            </button>
+          <div className="p-3 sm:p-4 border-t border-sky-100 dark:border-slate-800 bg-white dark:bg-slate-900 space-y-2 print:hidden">
+            {/* Top action row: Download PDF & Download JPG buttons */}
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                onClick={handleDownloadPdf}
+                disabled={isExportingPdf}
+                className="py-2 px-3 rounded-xl border border-sky-300 dark:border-sky-800 bg-sky-50 dark:bg-sky-950/50 hover:bg-sky-100 dark:hover:bg-sky-900/60 text-sky-700 dark:text-sky-300 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-98 disabled:opacity-50"
+              >
+                {isExportingPdf ? (
+                  <Loader2 className="w-4 h-4 animate-spin text-sky-600" />
+                ) : (
+                  <FileDown className="w-4 h-4 text-sky-600 dark:text-sky-400" />
+                )}
+                <span>Download PDF</span>
+              </button>
 
-            <button
-              type="button"
-              onClick={handlePrint}
-              className="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-sky-500/25 transition active:scale-98"
-            >
-              <Printer className="w-4 h-4" />
-              <span>Cetak Struk (Thermal)</span>
-            </button>
+              <button
+                type="button"
+                onClick={handleDownloadJpg}
+                disabled={isExportingJpg}
+                className="py-2 px-3 rounded-xl border border-blue-300 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-700 dark:text-blue-300 font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-98 disabled:opacity-50"
+              >
+                {isExportingJpg ? (
+                  <Loader2 className="w-4 h-4 animate-spin text-blue-600" />
+                ) : (
+                  <ImageDown className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                )}
+                <span>Download JPG</span>
+              </button>
+            </div>
 
-            <button
-              type="button"
-              onClick={() => setIsReceiptModalOpen(false)}
-              className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold transition"
-              title="Selesai & Buka Transaksi Baru"
-            >
-              <span>Tutup</span>
-            </button>
+            {/* Bottom action row: Copy text, Print thermal, Close */}
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={handleCopyReceiptText}
+                className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-semibold flex items-center gap-1.5 transition"
+                title="Salin teks struk"
+              >
+                {copied ? <Check className="w-4 h-4 text-sky-600" /> : <Copy className="w-4 h-4" />}
+                <span className="hidden sm:inline">{copied ? 'Tersalin' : 'Salin'}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handlePrint}
+                className="flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-sky-500/25 transition active:scale-98"
+              >
+                <Printer className="w-4 h-4" />
+                <span>Cetak Thermal</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setIsReceiptModalOpen(false)}
+                className="p-2.5 sm:py-3 sm:px-4 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold transition"
+                title="Selesai & Buka Transaksi Baru"
+              >
+                <span>Tutup</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

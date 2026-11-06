@@ -160,7 +160,17 @@ export const POSProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [storeSettings, setStoreSettings] = useState<StoreSettings>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.SETTINGS);
-      return saved ? JSON.parse(saved) : INITIAL_SETTINGS;
+      if (saved) {
+        const parsed: StoreSettings = JSON.parse(saved);
+        // Automatically sync to newly requested address and phone number
+        if (parsed.address.includes('Senopati') || !parsed.address.includes('Sidareja')) {
+          parsed.address = INITIAL_SETTINGS.address;
+          parsed.phone = INITIAL_SETTINGS.phone;
+          localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(parsed));
+        }
+        return parsed;
+      }
+      return INITIAL_SETTINGS;
     } catch {
       return INITIAL_SETTINGS;
     }
@@ -228,12 +238,30 @@ export const POSProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.USERS);
       if (saved) {
-        const parsed: User[] = JSON.parse(saved);
-        return parsed.map(u =>
-          u.id === 'user-01' || u.name === 'Kalia Janet'
-            ? { ...u, name: 'Gitin Arifysa Fadilah', username: 'gitin', email: 'gitin@gitincoffe.id' }
-            : u
-        );
+        let parsed: User[] = JSON.parse(saved);
+        parsed = parsed.map(u => {
+          if (u.role === 'admin' || u.name === 'Budi Santoso') {
+            return { ...u, name: 'Gitin', username: 'admin', email: 'gitin@gitincoffe.id' };
+          }
+          if (u.id === 'user-01' || u.name === 'Kalia Janet') {
+            return { ...u, name: 'Gitin Arifysa Fadilah', username: 'kasir', email: 'kasir@gitincoffe.id' };
+          }
+          return u;
+        });
+
+        // Ensure Manager Arifysa exists
+        if (!parsed.some(u => u.name === 'Arifysa' || u.role === 'manager')) {
+          parsed.push({
+            id: 'user-03',
+            name: 'Arifysa',
+            username: 'arifysa',
+            role: 'manager',
+            pin: '5555',
+            avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
+            email: 'arifysa@gitincoffe.id',
+          });
+        }
+        return parsed;
       }
       return INITIAL_USERS;
     } catch {
